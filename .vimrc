@@ -11,7 +11,7 @@ Plug 'kien/ctrlp.vim'
 
 " a solid language pack for vim.
 " https://github.com/sheerun/vim-polyglot
-plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 " https://github.com/scrooloose/nerdtree
