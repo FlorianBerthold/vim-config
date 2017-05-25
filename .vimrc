@@ -34,7 +34,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 
 "  Syntax checking hacks for vim
-Plug vim-syntastic/syntastic
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
