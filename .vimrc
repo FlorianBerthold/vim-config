@@ -1,12 +1,18 @@
 " specify a directory for plugins (for neovim: ~/.local/share/nvim/plugged)
-call plug"begin('~/.vim/plugged')
-
+call plug#begin('~/.vim/plugged')
 
 " a light and configurable statusline/tabline for vim
 plug 'itchyny/lightline.vim'
 
+Plug 'kien/ctrlp.vim'
+
 " a solid language pack for vim.
-plug 'sheerun/vim-polyglot'
+" plug 'sheerun/vim-polyglot'
+
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+call plug#end()
 
 " colors
 " https://github.com/joshdick/onedark.vim
