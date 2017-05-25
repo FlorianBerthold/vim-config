@@ -2,17 +2,27 @@
 call plug#begin('~/.vim/plugged')
 
 " a light and configurable statusline/tabline for vim
+" https://github.com/itchyny/lightline.vim
 Plug 'itchyny/lightline.vim'
 
+" Fuzzy file, buffer, mru, tag, etc finder.
+" https://github.com/kien/ctrlp.vim
 Plug 'kien/ctrlp.vim'
 
 " a solid language pack for vim.
-" plug 'sheerun/vim-polyglot'
+" https://github.com/sheerun/vim-polyglot
+plug 'sheerun/vim-polyglot'
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
+" https://github.com/scrooloose/nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
+" Vim plugin for intensely orgasmic commenting
+" https://github.com/scrooloose/nerdcommenter
+Plug 'scrooloose/nerdcommenter'
+
 call plug#end()
+
 
 " colors
 " https://github.com/joshdick/onedark.vim
