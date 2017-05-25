@@ -7,6 +7,10 @@ call plug#begin('~/.vim/plugged')
 
 " lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" A Vim color scheme. http://stevelosh.com/projects/badwolf/
+Plug 'sjl/badwolf'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
 " https://github.com/kien/ctrlp.vim
@@ -29,7 +33,7 @@ call plug#end()
 " colors
 " https://github.com/joshdick/onedark.vim
 syntax on
-colorscheme onedark
+colorscheme badwolf
 
 set history=1000 	 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
@@ -65,4 +69,4 @@ endif
 let g:airline_symbols.space = "\ua0"
   let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_theme='onedark'
+let g:airline_theme='badwolf'

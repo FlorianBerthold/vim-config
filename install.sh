@@ -6,10 +6,10 @@
 rm -rf ~/.vim 
 
 # make the dirs we need
-mkdir -p ~/.vim/colors
+#mkdir -p ~/.vim/colors
 #mkdir -p ~/.vim/autoload
 #mkdir -p ~/.vim/autoload/lightline/colorscheme
-mkdir -p ~/.vim/autoload/airline/themes
+#mkdir -p ~/.vim/autoload/airline/themes
 
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -21,9 +21,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	
 
 # colors
-wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim -O ~/.vim/colors/onedark.vim
-wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/onedark.vim -O ~/.vim/autoload/onedark.vim
-wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/airline/themes/onedark.vim -O ~/.vim/autoload/airline/themes/onedark.vim
+#wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim -O ~/.vim/colors/onedark.vim
+#wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/onedark.vim -O ~/.vim/autoload/onedark.vim
+#wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/airline/themes/onedark.vim -O ~/.vim/autoload/airline/themes/onedark.vim
 #wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/lightline/colorscheme/onedark.vim -O ~/.vim/autoload/lightline/colorscheme/onedark.vim
 
 # get the config
