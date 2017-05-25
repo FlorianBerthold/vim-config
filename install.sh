@@ -23,3 +23,4 @@ wget https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/ligh
 # get the config
 wget https://raw.githubusercontent.com/FlorianBerthold/vim-config/master/.vimrc -O ~/.vimrc
 
+
