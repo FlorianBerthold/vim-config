@@ -1,6 +1,6 @@
 #!/bin/sh
 
-aptitude install vim -y
+# aptitude install vim -y
 
 # cleanup
 rm -rf ~/.vim 

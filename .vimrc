@@ -40,3 +40,10 @@ set smarttab				" enable smart-tabs
 "" advanced
 
 set ruler					" show row and column ruler information
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"⭤":""}',
+      \ }
+      \ }
