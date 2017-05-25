@@ -2,7 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 " a light and configurable statusline/tabline for vim
-plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 Plug 'kien/ctrlp.vim'
 
