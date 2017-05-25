@@ -32,7 +32,6 @@ call plug#end()
 syntax on
 colorscheme onedark
 
-let g:airline_theme='onedark'
 
 set history=1000 		 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
@@ -57,8 +56,10 @@ set softtabstop=2		" number of spaces per tab
 set smartindent			" enable smart-indent
 set smarttab				" enable smart-tabs
 
-"" advanced
-
 set ruler					" show row and column ruler information
 
 
+" airline
+let g:airline#extensions#tabline#enabled = 1
+
+let g:airline_theme='onedark'
