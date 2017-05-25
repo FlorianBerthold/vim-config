@@ -26,40 +26,41 @@ Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
-
 " colors
 " https://github.com/joshdick/onedark.vim
 syntax on
 colorscheme onedark
 
-
-set history=1000 		 " store lots of :cmdline history
+set history=1000 	 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
 
 set backspace=indent,eol,start	" backspace behaviour
 
 set gcr=a:blinkon0	"disable cursor blink
 
-set number				" show line numbers
+set number		" show line numbers
 set showcmd             " show command in bottom bar
-set showmatch			" highlight matching brace
-set visualbell				" use visual bell (no beeping)
-set hlsearch				" highlight all search results
-set smartcase			" enable smart-case search
-set ignorecase			" always case-insensitive
-set incsearch				" searches for strings incrementally
-set autoindent			" auto-indent new lines
+set showmatch		" highlight matching brace
+set visualbell		" use visual bell (no beeping)
+set hlsearch		" highlight all search results
+set smartcase		" enable smart-case search
+set ignorecase		" always case-insensitive
+set incsearch		" searches for strings incrementally
+set autoindent		" auto-indent new lines
 
+set shiftwidth=2	" number of auto-indent spaces
+set softtabstop=2	" number of spaces per tab
+set smartindent		" enable smart-indent
+set smarttab		" enable smart-tabs
 
-set shiftwidth=2		" number of auto-indent spaces
-set softtabstop=2		" number of spaces per tab
-set smartindent			" enable smart-indent
-set smarttab				" enable smart-tabs
-
-set ruler					" show row and column ruler information
-
+set ruler		" show row and column ruler information
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
-
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+  let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='onedark'
