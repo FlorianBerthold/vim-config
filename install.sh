@@ -2,6 +2,10 @@
 
 # aptitude install vim -y
 
+# brew install shellcheck
+
+
+
 # cleanup
 rm -rf ~/.vim 
 

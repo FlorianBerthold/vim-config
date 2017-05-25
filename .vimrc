@@ -33,6 +33,9 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " https://github.com/scrooloose/nerdcommenter
 Plug 'scrooloose/nerdcommenter'
 
+"  Syntax checking hacks for vim
+Plug vim-syntastic/syntastic
+
 call plug#end()
 
 " colors
@@ -75,3 +78,17 @@ let g:airline_symbols.space = "\ua0"
   let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='badwolf'
+
+
+" syntastic
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
