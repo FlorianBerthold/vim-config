@@ -8,7 +8,7 @@ rm -rf ~/.vim
 # make the dirs we need
 mkdir -p ~/.vim/colors
 #mkdir -p ~/.vim/autoload
-mkdir -p ~/.vim/autoload/lightline/themes
+mkdir -p ~/.vim/autoload/lightline/colorscheme
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
