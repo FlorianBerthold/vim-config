@@ -32,6 +32,7 @@ call plug#end()
 syntax on
 colorscheme onedark
 
+let g:airline_theme='onedark'
 
 set history=1000 		 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
@@ -60,9 +61,4 @@ set smarttab				" enable smart-tabs
 
 set ruler					" show row and column ruler information
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"⭤":""}',
-      \ }
-      \ }
+

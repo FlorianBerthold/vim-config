@@ -23,7 +23,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # colors
 wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim -O ~/.vim/colors/onedark.vim
 wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/onedark.vim -O ~/.vim/autoload/onedark.vim
-wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/airline/themes/onedark.vim -O ~/.vim/airline/themes/onedark.vim
+wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/airline/themes/onedark.vim -O ~/.vim/autoload/airline/themes/onedark.vim
 #wget -qN https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/lightline/colorscheme/onedark.vim -O ~/.vim/autoload/lightline/colorscheme/onedark.vim
 
 # get the config
