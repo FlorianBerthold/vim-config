@@ -7,6 +7,7 @@
 
 
 # cleanup
+rm ~/.vimrc
 rm -rf ~/.vim 
 
 # plugin manager Plug
