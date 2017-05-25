@@ -1,3 +1,8 @@
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
 " specify a directory for plugins (for neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
