@@ -3,7 +3,10 @@ call plug#begin('~/.vim/plugged')
 
 " a light and configurable statusline/tabline for vim
 " https://github.com/itchyny/lightline.vim
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
+
+" lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
 " https://github.com/kien/ctrlp.vim
