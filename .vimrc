@@ -48,6 +48,9 @@ Plug 'chr4/nginx.vim'
 " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
 Plug 'luochen1990/rainbow'
 
+" fugitive.vim: a Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 
