@@ -4,6 +4,12 @@ augroup reload_vimrc " {
 augroup END " }
 
 " specify a directory for plugins (for neovim: ~/.local/share/nvim/plugged)
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " a light and configurable statusline/tabline for vim

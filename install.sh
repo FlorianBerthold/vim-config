@@ -12,11 +12,7 @@ rm -rf ~/.vim
 
 mkdir -p ~/.vim_backup
 
-# plugin manager Plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# basics
+# basic colors
 curl -fLo ~/.vim/colors/badwolf.vim --create-dirs \
    https://raw.githubusercontent.com/sjl/badwolf/master/colors/badwolf.vim
 
