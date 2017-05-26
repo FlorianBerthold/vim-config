@@ -4,8 +4,6 @@
 
 # brew install shellcheck
 
-
-
 # cleanup
 rm ~/.vimrc
 rm -rf ~/.vim

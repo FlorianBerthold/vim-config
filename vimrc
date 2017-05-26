@@ -51,6 +51,10 @@ Plug 'luochen1990/rainbow'
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
 
+" Python
+" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
+Plug 'klen/python-mode'
+
 call plug#end()
 
 
