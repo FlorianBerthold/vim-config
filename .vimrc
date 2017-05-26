@@ -73,7 +73,7 @@ set ruler		" show row and column ruler information
 set laststatus=2
 
 " remove trailing whitespaces
-autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre * %s/\s\+$//e
 
 " airline
 let g:airline_powerline_fonts = 1
