@@ -34,6 +34,7 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'kien/ctrlp.vim'
 
 " Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
+" https://github.com/majutsushi/tagbar
 Plug 'majutsushi/tagbar'
 
 " Molokai color scheme for Vim
@@ -53,19 +54,24 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 
 "  Syntax checking hacks for vim
+" https://github.com/vim-syntastic/syntastic
 Plug 'vim-syntastic/syntastic'
 
 " Improved nginx vim plugin (incl. syntax highlighting)
+" https://github.com/chr4/nginx.vim
 Plug 'chr4/nginx.vim'
 
 " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
+" https://github.com/luochen1990/rainbow
 Plug 'luochen1990/rainbow'
 
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
+" https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
 
-" Python
+""" Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
+" https://github.com/python-mode/python-mode
 Plug 'klen/python-mode'
 
 call plug#end()
@@ -138,7 +144,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='badwolf'
 
-"""  Syntastic adjustments
+" Syntastic adjustments
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
@@ -150,5 +156,4 @@ highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
 highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
 highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
 highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
-
 
