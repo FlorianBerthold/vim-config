@@ -87,7 +87,12 @@ set backupdir=~/.vim_backup
 autocmd BufWritePre * %s/\s\+$//e
 
 " nerdtree
-map <C-n> :NERDTreeToggle<CR>
+let NERDChristmasTree = 1
+let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
+nmap <c-b> :NERDTreeToggle<cr>
+nmap <C-n> <c-w><left><down><c-w><c-w>
+nmap <C-p> <c-w><left><up><c-w><c-w>
+nmap <C-o> <c-w><left><CR>
 
 " airline
 let g:airline_powerline_fonts = 1
