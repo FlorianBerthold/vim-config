@@ -20,6 +20,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Perform all your vim insert mode completions with Tab
+Plug 'ervandew/supertab'
+
 " Fuzzy file, buffer, mru, tag, etc finder.
 " https://github.com/kien/ctrlp.vim
 Plug 'kien/ctrlp.vim'
@@ -42,15 +45,20 @@ Plug 'vim-syntastic/syntastic'
 " Improved nginx vim plugin (incl. syntax highlighting)
 Plug 'chr4/nginx.vim'
 
+" rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
+Plug 'luochen1990/rainbow'
+
 call plug#end()
+
 
 " colors
 " https://github.com/joshdick/onedark.vim
 syntax on
 "colorscheme badwolf
-
 colorscheme molokai
 
+" taste the rainbow
+let g:rainbow_active = 1
 
 set history=1000 	 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
