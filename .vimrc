@@ -14,9 +14,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" A Vim color scheme. http://stevelosh.com/projects/badwolf/
-Plug 'sjl/badwolf'
-
 " Fuzzy file, buffer, mru, tag, etc finder.
 " https://github.com/kien/ctrlp.vim
 Plug 'kien/ctrlp.vim'
@@ -44,7 +41,10 @@ call plug#end()
 " colors
 " https://github.com/joshdick/onedark.vim
 syntax on
-colorscheme badwolf
+"colorscheme badwolf
+
+colorscheme molokai
+
 
 set history=1000 	 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
@@ -61,7 +61,9 @@ set hlsearch		" highlight all search results
 set smartcase		" enable smart-case search
 set ignorecase		" always case-insensitive
 set incsearch		" searches for strings incrementally
+
 set autoindent		" auto-indent new lines
+set copyindent
 
 set shiftwidth=2	" number of auto-indent spaces
 set softtabstop=2	" number of spaces per tab
@@ -71,6 +73,9 @@ set smarttab		" enable smart-tabs
 set ruler		" show row and column ruler information
 
 set laststatus=2
+
+set backup
+set backupdir=~/.vim_backup
 
 " remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
