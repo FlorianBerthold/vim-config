@@ -36,6 +36,9 @@ Plug 'scrooloose/nerdcommenter'
 "  Syntax checking hacks for vim
 Plug 'vim-syntastic/syntastic'
 
+" Improved nginx vim plugin (incl. syntax highlighting)
+Plug 'chr4/nginx.vim'
+
 call plug#end()
 
 " colors
