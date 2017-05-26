@@ -21,7 +21,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Perform all your vim insert mode completions with Tab
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
+
+" You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
+Plug 'ajh17/VimCompletesMe'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
 " https://github.com/kien/ctrlp.vim
