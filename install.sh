@@ -20,5 +20,5 @@ curl -fLo ~/.vim/colors/molokai.vim --create-dirs \
   https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 
 # get the config
-wget -qN https://raw.githubusercontent.com/FlorianBerthold/vim-config/master/.vimrc -O ~/.vimrc
+wget -qN https://raw.githubusercontent.com/FlorianBerthold/vim-config/master/vimrc -O ~/.vimrc
 
