@@ -17,13 +17,16 @@ call plug#begin('~/.vim/plugged')
 "Plug 'itchyny/lightline.vim'
 
 " lean & mean status/tabline for vim that's light as air
+" https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline'
+" https://github.com/vim-airline/vim-airline-themes
 Plug 'vim-airline/vim-airline-themes'
 
 " Perform all your vim insert mode completions with Tab
 " Plug 'ervandew/supertab'
 
 " You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
+" https://github.com/ajh17/VimCompletesMe
 Plug 'ajh17/VimCompletesMe'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
@@ -32,6 +35,10 @@ Plug 'kien/ctrlp.vim'
 
 " Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
 Plug 'majutsushi/tagbar'
+
+" Molokai color scheme for Vim
+" https://github.com/tomasr/molokai
+Plug 'tomasr/molokai'
 
 " a solid language pack for vim.
 " https://github.com/sheerun/vim-polyglot
@@ -78,7 +85,7 @@ nmap <C-o> <c-w><left><CR>
 " https://github.com/joshdick/onedark.vim
 syntax on
 "colorscheme badwolf
-colorscheme molokai
+silent! colorscheme molokai
 
 " taste the rainbow
 let g:rainbow_active = 1
@@ -127,7 +134,7 @@ if !exists('g:airline_symbols')
       let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-  let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='badwolf'
 
