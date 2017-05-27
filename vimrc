@@ -69,6 +69,12 @@ Plug 'luochen1990/rainbow'
 " https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
 
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
 " https://github.com/python-mode/python-mode
@@ -156,4 +162,14 @@ highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
 highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
 highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
 highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
+
+
+""" snippets
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
