@@ -88,11 +88,8 @@ Plug 'luochen1990/rainbow'
 " https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
 
-" Track the engine.
-Plug 'SirVer/ultisnips'
-
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
