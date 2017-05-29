@@ -1,13 +1,13 @@
 augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
 " Install the plugin manager
 " specify a directory for plugins (for neovim: ~/.local/share/nvim/plugged)
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -71,6 +71,9 @@ Plug 'https://github.com/tpope/vim-fugitive'
 " eunuch.vim: helpers for UNIX
 Plug 'https://github.com/tpope/vim-eunuch'
 
+" A simple alignment operator for Vim text editor
+Plug 'https://github.com/tommcdo/vim-lion'
+
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
 Plug 'https://github.com/python-mode/python-mode'
@@ -110,6 +113,7 @@ set number		" show line numbers
 set showcmd             " show command in bottom bar
 set showmatch		" highlight matching brace
 set visualbell		" use visual bell (no beeping)
+
 set hlsearch		" highlight all search results
 set smartcase		" enable smart-case search
 set ignorecase		" always case-insensitive
@@ -147,13 +151,12 @@ endif
 autocmd BufWritePre * %s/\s\+$//e
 
 " nerdtree
-let NERDChristmasTree = 1
 let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
 " airline
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
@@ -172,15 +175,5 @@ highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
 highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
 highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
 highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
-
-
-""" snippets
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " vim:set ft=vim et sw=2:
