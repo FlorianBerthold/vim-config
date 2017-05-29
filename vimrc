@@ -154,6 +154,15 @@ set laststatus=2
 
 set autoread
 
+if !&scrolloff
+  set scrolloff=1
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+set display+=lastline
+
+
 set nrformats-=octal
 
 if &listchars ==# 'eol:$'
