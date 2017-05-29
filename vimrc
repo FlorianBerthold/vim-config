@@ -99,49 +99,33 @@ silent! colorscheme molokai
 " taste the rainbow
 let g:rainbow_active = 1
 
-set history=1000 	 " store lots of :cmdline history
-set undolevels=1000	 " number of undo levels
-set tabpagemax=50
-
-set encoding=utf-8
-
+set autoindent		        " auto-indent new lines
+set autoread                    " autoload file changes. you can undo by pressing u.
 set backspace=indent,eol,start	" backspace behaviour
 set complete-=i
-set gcr=a:blinkon0	" disable cursor blink
-
-set number		" show line numbers
-set showcmd             " show command in bottom bar
-set showmatch		" highlight matching brace
-set visualbell		" use visual bell (no beeping)
-
-set hlsearch		" highlight all search results
-set smartcase		" enable smart-case search
-set ignorecase		" always case-insensitive
-set incsearch		" searches for strings incrementally
-
-set autoindent		" auto-indent new lines
 set copyindent
-
-set shiftwidth=2	" number of auto-indent spaces
-set softtabstop=2	" number of spaces per tab
-set smartindent		" enable smart-indent
-set smarttab		" enable smart-tabs
-
-set ruler		" show row and column ruler information
-set wildmenu
-set laststatus=2
-
-set autoread            " autoload file changes. you can undo by pressing u.
-
-if !&scrolloff
-  set scrolloff=1
-endif
-if !&sidescrolloff
-  set sidescrolloff=5
-endif
 set display+=lastline
-
+set encoding=utf-8
+set gcr=a:blinkon0	        " disable cursor blink
+set history=1000 	        " store lots of :cmdline history
+set hlsearch		        " highlight all search results
+set ignorecase		        " always case-insensitive
+set incsearch		        " searches for strings incrementally
+set laststatus=2
 set nrformats-=octal
+set number		        " show line numbers
+set ruler		        " show row and column ruler information
+set shiftwidth=2	        " number of auto-indent spaces
+set showcmd                     " show command in bottom bar
+set showmatch		        " highlight matching brace
+set smartcase		        " enable smart-case search
+set smartindent		        " enable smart-indent
+set smarttab		        " enable smart-tabs
+set softtabstop=2	        " number of spaces per tab
+set tabpagemax=50
+set undolevels=1000	        " number of undo levels
+set visualbell		        " use visual bell (no beeping)
+set wildmenu
 
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
@@ -152,6 +136,9 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " nerdtree
 let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
+
+" lion save some space
+let b:lion_squeeze_spaces = 1
 
 " airline
 let g:airline_powerline_fonts = 1
