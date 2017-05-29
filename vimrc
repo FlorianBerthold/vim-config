@@ -125,6 +125,8 @@ set history=1000 	 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
 set tabpagemax=50
 
+set encoding=utf-8
+
 set backspace=indent,eol,start	" backspace behaviour
 set complete-=i
 set gcr=a:blinkon0	"disable cursor blink
