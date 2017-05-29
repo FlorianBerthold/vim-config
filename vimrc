@@ -50,9 +50,6 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-" Vim plugin for intensely orgasmic commenting
-"Plug 'https://github.com/scrooloose/nerdcommenter'
-
 "  Syntax checking hacks for vim
 Plug 'https://github.com/vim-syntastic/syntastic'
 
@@ -71,8 +68,26 @@ Plug 'https://github.com/tpope/vim-eunuch'
 " A simple alignment operator for Vim text editor
 Plug 'https://github.com/tommcdo/vim-lion'
 
+" commentary.vim: comment stuff out
+Plug 'https://github.com/tpope/vim-commentary'
+
+" surround.vim: quoting/parenthesizing made simple
+Plug 'https://github.com/tpope/vim-surround'
+
 " A Vim plugin that manages your tag files
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
+
+""" Movement
+" The missing motion for Vim 👟
+Plug 'https://github.com/justinmk/vim-sneak'
+
+""" Autocomplete and snippets combo
+" Perform all your vim insert mode completions with Tab
+Plug 'https://github.com/ervandew/supertab'
+" https://github.com/Valloric/YouCompleteMe
+Plug 'https://github.com/Valloric/YouCompleteMe'
+" UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
+Plug 'https://github.com/SirVer/ultisnips'
 
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
@@ -90,6 +105,15 @@ nmap <F7> :NERDTreeToggle<cr>
 "nmap <C-p> <c-w><left><up><c-w><c-w>
 "nmap <C-o> <c-w><left><CR>
 
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 """ colors
 " https://github.com/joshdick/onedark.vim
@@ -139,6 +163,10 @@ let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
 " lion save some space
 let b:lion_squeeze_spaces = 1
+
+" Sneak
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
 
 " airline
 let g:airline_powerline_fonts = 1
