@@ -31,70 +31,49 @@ set directory=~/.vim/swap//
 " install the plugins
 call plug#begin('~/.vim/plugged')
 
-" a light and configurable statusline/tabline for vim
-" https://github.com/itchyny/lightline.vim
-"Plug 'itchyny/lightline.vim'
-
 " lean & mean status/tabline for vim that's light as air
-" https://github.com/vim-airline/vim-airline
-Plug 'vim-airline/vim-airline'
-" https://github.com/vim-airline/vim-airline-themes
-Plug 'vim-airline/vim-airline-themes'
-
-" Perform all your vim insert mode completions with Tab
-" Plug 'ervandew/supertab'
-
-" You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
-" https://github.com/ajh17/VimCompletesMe
-" Plug 'ajh17/VimCompletesMe'
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/vim-airline/vim-airline-themes'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
-" https://github.com/kien/ctrlp.vim
-Plug 'kien/ctrlp.vim'
+Plug 'https://github.com/kien/ctrlp.vim'
 
 " Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
-" https://github.com/majutsushi/tagbar
-Plug 'majutsushi/tagbar'
+Plug 'https://github.com/majutsushi/tagbar'
 
 " Molokai color scheme for Vim
-" https://github.com/tomasr/molokai
-Plug 'tomasr/molokai'
+Plug 'https://github.com/tomasr/molokai'
 
 " a solid language pack for vim.
-" https://github.com/sheerun/vim-polyglot
-Plug 'sheerun/vim-polyglot'
+Plug 'https://github.com/sheerun/vim-polyglot'
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
-" https://github.com/scrooloose/nerdtree
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Vim plugin for intensely orgasmic commenting
-" https://github.com/scrooloose/nerdcommenter
-Plug 'scrooloose/nerdcommenter'
+"Plug 'https://github.com/scrooloose/nerdcommenter'
 
 "  Syntax checking hacks for vim
-" https://github.com/vim-syntastic/syntastic
-Plug 'vim-syntastic/syntastic'
+Plug 'https://github.com/vim-syntastic/syntastic'
 
 " Improved nginx vim plugin (incl. syntax highlighting)
-" https://github.com/chr4/nginx.vim
-Plug 'chr4/nginx.vim'
+Plug 'https://github.com/chr4/nginx.vim'
 
 " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
-" https://github.com/luochen1990/rainbow
-Plug 'luochen1990/rainbow'
+Plug 'https://github.com/luochen1990/rainbow'
 
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
-" https://github.com/tpope/vim-fugitive
-Plug 'tpope/vim-fugitive'
+Plug 'https://github.com/tpope/vim-fugitive'
 
 " Snippets are separated from the engine. Add this if you want them:
 "Plug 'honza/vim-snippets'
 
+" eunuch.vim: helpers for UNIX
+Plug 'https://github.com/tpope/vim-eunuch'
+
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
-" https://github.com/python-mode/python-mode
-Plug 'klen/python-mode'
+Plug 'https://github.com/python-mode/python-mode'
 
 call plug#end()
 
