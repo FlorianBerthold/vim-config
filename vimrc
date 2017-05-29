@@ -74,6 +74,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 " surround.vim: quoting/parenthesizing made simple
 Plug 'https://github.com/tpope/vim-surround'
 
+""" Tags
 " A Vim plugin that manages your tag files
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
 
@@ -83,9 +84,11 @@ Plug 'https://github.com/justinmk/vim-sneak'
 
 """ Autocomplete and snippets combo
 " Perform all your vim insert mode completions with Tab
-Plug 'https://github.com/ervandew/supertab'
+"Plug 'https://github.com/ervandew/supertab'
 " You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
-Plug 'https://github.com/ajh17/VimCompletesMe'
+"Plug 'https://github.com/ajh17/VimCompletesMe'
+" Chained completion that works the way you want!
+Plug 'https://github.com/lifepillar/vim-mucomplete'
 " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 Plug 'https://github.com/SirVer/ultisnips'
 
@@ -93,6 +96,7 @@ Plug 'https://github.com/SirVer/ultisnips'
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
 Plug 'https://github.com/python-mode/python-mode'
 
+""" Other
 call plug#end()
 
 
@@ -105,15 +109,12 @@ nmap <F7> :NERDTreeToggle<cr>
 "nmap <C-p> <c-w><left><up><c-w><c-w>
 "nmap <C-o> <c-w><left><CR>
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" mucomplete
+set completeopt+=menuone
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+let g:mucomplete#enable_auto_at_startup = 1
 
 """ colors
 " https://github.com/joshdick/onedark.vim
@@ -126,7 +127,7 @@ let g:rainbow_active = 1
 set autoindent		        " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
 set backspace=indent,eol,start	" backspace behaviour
-set complete-=i
+"set complete-=i
 set copyindent
 set display+=lastline
 set encoding=utf-8
