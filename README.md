@@ -25,4 +25,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/FlorianBerthold/vim-config
 
 # Lion - text aligment plugin
 ```[count]gl{motion}{char}``` = ```glip"``` to align left from a "
+
 ```[count]gL{motion}{char}``` = ```gLip"``` to align right from a "
