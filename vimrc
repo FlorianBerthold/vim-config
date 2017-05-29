@@ -123,9 +123,10 @@ let g:rainbow_active = 1
 
 set history=1000 	 " store lots of :cmdline history
 set undolevels=1000	 " number of undo levels
+set tabpagemax=50
 
 set backspace=indent,eol,start	" backspace behaviour
-
+set complete-=i
 set gcr=a:blinkon0	"disable cursor blink
 
 set number		" show line numbers
@@ -146,9 +147,16 @@ set smartindent		" enable smart-indent
 set smarttab		" enable smart-tabs
 
 set ruler		" show row and column ruler information
-
+set wildmenu
 set laststatus=2
 
+set autoread
+
+set nrformats-=octal
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
 
 " remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
@@ -190,3 +198,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" vim:set ft=vim et sw=2:
