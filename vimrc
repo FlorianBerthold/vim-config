@@ -84,8 +84,8 @@ Plug 'https://github.com/justinmk/vim-sneak'
 """ Autocomplete and snippets combo
 " Perform all your vim insert mode completions with Tab
 Plug 'https://github.com/ervandew/supertab'
-" https://github.com/Valloric/YouCompleteMe
-Plug 'https://github.com/Valloric/YouCompleteMe'
+" You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
+Plug 'https://github.com/ajh17/VimCompletesMe'
 " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 Plug 'https://github.com/SirVer/ultisnips'
 
