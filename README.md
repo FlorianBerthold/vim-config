@@ -20,3 +20,9 @@ This will delete you local vim config files and overwrites them
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/FlorianBerthold/vim-config/master/install.sh)"
 ```
 
+
+
+
+# Lion - text aligment plugin
+```[count]gl{motion}{char}``` = ```glip"``` to align left from a "
+```[count]gL{motion}{char}``` = ```gLip"``` to align right from a "
