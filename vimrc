@@ -112,7 +112,6 @@ nmap <F7> :NERDTreeToggle<cr>
 """ colors
 " https://github.com/joshdick/onedark.vim
 syntax on
-"colorscheme badwolf
 silent! colorscheme molokai
 
 " taste the rainbow
@@ -126,7 +125,7 @@ set encoding=utf-8
 
 set backspace=indent,eol,start	" backspace behaviour
 set complete-=i
-set gcr=a:blinkon0	"disable cursor blink
+set gcr=a:blinkon0	" disable cursor blink
 
 set number		" show line numbers
 set showcmd             " show command in bottom bar
@@ -149,7 +148,7 @@ set ruler		" show row and column ruler information
 set wildmenu
 set laststatus=2
 
-set autoread
+set autoread            " autoload file changes. you can undo by pressing u.
 
 if !&scrolloff
   set scrolloff=1
@@ -158,7 +157,6 @@ if !&sidescrolloff
   set sidescrolloff=5
 endif
 set display+=lastline
-
 
 set nrformats-=octal
 
