@@ -20,6 +20,21 @@ This will delete you local vim config files and overwrites them
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/FlorianBerthold/vim-config/master/install.sh)"
 ```
 
+# Sneak on f
+Sneak is invoked with `f` followed by exactly two characters:
+
+    f{char}{char}
+
+* Type `fab` to **move the cursor** immediately to the next instance of the text "ab".
+    * Additional matches, if any, are highlighted until the cursor is moved.
+* Type `;` to go to the next match (or `f` again, if `s_next` is enabled; see [`:help sneak`](doc/sneak.txt)).
+* Type `3;` to skip to the third match from the current position.
+* Type `ctrl-o` or ``` `` ``` to go back to the starting point.
+    * This is a built-in Vim motion; Sneak adds to Vim's [jumplist](http://vimdoc.sourceforge.net/htmldoc/motion.html#jumplist)
+      *only* on `f` invocation—not repeats—so you can
+      abandon a trail of `;` or `,` by a single `ctrl-o` or ``` `` ```.
+* Type `f<Enter>` at any time to repeat the last Sneak-search.
+* Type `F` to search backwards.
 
 
 
