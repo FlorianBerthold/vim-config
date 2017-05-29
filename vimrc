@@ -70,10 +70,10 @@ Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-fugitive'
 
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
@@ -87,10 +87,10 @@ call plug#end()
 " tagbar mappings
 nmap <F8> :TagbarToggle<CR>
 " nerdtree mappings
-nmap <c-b> :NERDTreeToggle<cr>
-nmap <C-n> <c-w><left><down><c-w><c-w>
-nmap <C-p> <c-w><left><up><c-w><c-w>
-nmap <C-o> <c-w><left><CR>
+nmap <F7> :NERDTreeToggle<cr>
+"nmap <C-n> <c-w><left><down><c-w><c-w>
+"nmap <C-p> <c-w><left><up><c-w><c-w>
+"nmap <C-o> <c-w><left><CR>
 
 
 """ colors
