@@ -3,6 +3,7 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
+" Install the plugin manager
 " specify a directory for plugins (for neovim: ~/.local/share/nvim/plugged)
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -10,6 +11,24 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
+" backupfiles
+if empty(glob('~/.vim/backup'))
+  silent !mkdir -p ~/.vim/backup
+endif
+
+set backup
+set backupdir=~/.vim/backup//
+
+" swapfiles
+if empty(glob('~/.vim/swap'))
+  silent !mkdir -p ~/.vim/swap
+endif
+
+set swapfile
+set directory=~/.vim/swap//
+
+" install the plugins
 call plug#begin('~/.vim/plugged')
 
 " a light and configurable statusline/tabline for vim
@@ -27,7 +46,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
 " https://github.com/ajh17/VimCompletesMe
-Plug 'ajh17/VimCompletesMe'
+" Plug 'ajh17/VimCompletesMe'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
 " https://github.com/kien/ctrlp.vim
@@ -70,10 +89,10 @@ Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-fugitive'
 
 " Track the engine.
-" Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
-" Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
@@ -130,8 +149,6 @@ set ruler		" show row and column ruler information
 
 set laststatus=2
 
-set backup
-set backupdir=~/.vim_backup
 
 " remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
