@@ -65,14 +65,14 @@ Plug 'https://github.com/luochen1990/rainbow'
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'https://github.com/tpope/vim-fugitive'
 
-" Snippets are separated from the engine. Add this if you want them:
-"Plug 'honza/vim-snippets'
-
 " eunuch.vim: helpers for UNIX
 Plug 'https://github.com/tpope/vim-eunuch'
 
 " A simple alignment operator for Vim text editor
 Plug 'https://github.com/tommcdo/vim-lion'
+
+" A Vim plugin that manages your tag files
+Plug 'https://github.com/ludovicchabant/vim-gutentags'
 
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
