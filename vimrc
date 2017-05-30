@@ -135,18 +135,7 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 
 call plug#end()
 
-
-""" keyboard mappings
-" tagbar mappings
-nmap <F8> :TagbarToggle<CR>
-" nerdtree mappings
-nmap <F7> :NERDTreeToggle<cr>
-"nmap <C-n> <c-w><left><down><c-w><c-w>
-"nmap <C-p> <c-w><left><up><c-w><c-w>
-"nmap <C-o> <c-w><left><CR>
-
-
-" mucomplete
+" tab complet
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
