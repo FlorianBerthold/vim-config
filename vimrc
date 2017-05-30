@@ -42,8 +42,6 @@ call plug#begin('~/.vim/plugged')
 """ Color etc.
 " Molokai color scheme for Vim
 Plug 'https://github.com/tomasr/molokai'
-syntax on
-silent! colorscheme molokai
 
 " lean & mean status/tabline for vim that's light as air
 Plug 'https://github.com/vim-airline/vim-airline'
@@ -139,6 +137,9 @@ Plug 'https://github.com/chr4/nginx.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 
 call plug#end()
+
+syntax on
+silent! colorscheme molokai
 
 " Wildmode / Tab compl. {{{
 set wildmode=list:longest
