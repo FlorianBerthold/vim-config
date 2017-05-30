@@ -1,19 +1,21 @@
 " vim: fdm=marker ts=2 sts=2 sw=2 fdl=0
+
+" Auto reload vimrc on save{{{
 augroup reload_vimrc " {
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
+augroup END " }}}}
 
-" Install the plugin manager
+" Install the plugin manager{{{
 " specify a directory for plugins (for neovim: ~/.local/share/nvim/plugged)
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+endif"}}}
 
-" The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
 " Backup / Swap and Undofiles " {{{
+" The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
 if !isdirectory(expand('~').'/.vim/backup')
   silent !mkdir -p ~/.vim/backup
 endif
@@ -35,17 +37,17 @@ set undofile
 set undodir=~/.vim/undo//
 " }}}
 
-" install the plugins
+" Install the plugins and config them {{{
 " https://github.com/junegunn/vim-plug/wiki/faq
 call plug#begin('~/.vim/plugged')
 
-""" Color etc.
+" Color etc {{{
 " Molokai color scheme for Vim
 Plug 'https://github.com/tomasr/molokai'
 
 " lean & mean status/tabline for vim that's light as air
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/vim-airline/vim-airline-themes' " {{{
+Plug 'https://github.com/vim-airline/vim-airline' "
+Plug 'https://github.com/vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -54,29 +56,29 @@ let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='badwolf'
-" }}}
-
-" Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
-Plug 'https://github.com/majutsushi/tagbar'
 
 " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
 Plug 'https://github.com/luochen1990/rainbow'
 let g:rainbow_active = 1
+"}}}
 
 """ Finding file
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
-Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }"{{{
+Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 nnoremap <silent> <F4> :NERDTreeToggle<CR>
 nnoremap <silent> <F5> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
-let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']"}}}
+let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
 " everything else
+" Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
+Plug 'https://github.com/majutsushi/tagbar'
+
+Plug 'https://github.com/vim-syntastic/syntastic' "{{{
 "  Syntax checking hacks for vim
-Plug 'https://github.com/vim-syntastic/syntastic'"{{{
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
@@ -87,7 +89,8 @@ highlight SyntasticStyleWarning term=reverse cterm=bold ctermfg=244 ctermbg=232 
 highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
 highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
 highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
-highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow"}}}
+highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
+"}}}
 
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'https://github.com/tpope/vim-fugitive'
@@ -137,7 +140,9 @@ Plug 'https://github.com/chr4/nginx.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
 
 call plug#end()
+"}}}
 
+" Enable colors and select theme
 syntax on
 silent! colorscheme molokai
 
@@ -155,7 +160,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif"}}}
 
-" MULTIPURPOSE TAB KEY
+" Multipurpose tab {{{
 " Indent if we're at the beginning of a line. Else, do completion.
 " set expandtab
 " function! InsertTabWrapper()
@@ -167,12 +172,11 @@ set wildignore+=*.png,*.jpg,*.gif"}}}
 "   endif
 " endfunction
 " inoremap <expr> <tab> InsertTabWrapper()
-" inoremap <s-tab> <c-n>
+" inoremap <s-tab> <c-n>}}}
 
 set autoindent		        " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
 set backspace=indent,eol,start	" allow backspace in insert mode
-"set complete-=i
 set copyindent
 set display+=lastline
 set encoding=utf-8
@@ -203,4 +207,3 @@ endif
 " remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
 
-" vim:set ft=vim et sw=2:
