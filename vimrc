@@ -32,7 +32,7 @@ if !isdirectory(expand('~').'/.vim/undo')
   silent !mkdir -p ~/.vim/undo
 endif
 set undofile
-set undodir=~/.vim/undo
+set undodir=~/.vim/undo//
 
 " install the plugins
 " https://github.com/junegunn/vim-plug/wiki/faq
@@ -41,6 +41,14 @@ call plug#begin('~/.vim/plugged')
 " lean & mean status/tabline for vim that's light as air
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_theme='badwolf'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
@@ -56,9 +64,24 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+nnoremap <silent> <F4> :NERDTreeToggle<CR>
+nnoremap <silent> <F5> :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
+let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
 "  Syntax checking hacks for vim
 Plug 'https://github.com/vim-syntastic/syntastic'
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_error_symbol = "S"
+let g:syntastic_style_warning_symbol = "s"
+highlight SyntasticStyleWarning term=reverse cterm=bold ctermfg=244 ctermbg=232 gui=bold guifg=#808080 guibg=#080808
+highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
+highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
+highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
+highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
 
 " Improved nginx vim plugin (incl. syntax highlighting)
 Plug 'https://github.com/chr4/nginx.vim'
@@ -74,6 +97,7 @@ Plug 'https://github.com/tpope/vim-eunuch'
 
 " A simple alignment operator for Vim text editor
 Plug 'https://github.com/tommcdo/vim-lion'
+let b:lion_squeeze_spaces = 1
 
 " commentary.vim: comment stuff out
 Plug 'https://github.com/tpope/vim-commentary'
@@ -88,6 +112,8 @@ Plug 'https://github.com/ludovicchabant/vim-gutentags'
 """ Movement
 " The missing motion for Vim 👟
 Plug 'https://github.com/justinmk/vim-sneak'
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
 
 """ Autocomplete and snippets combo
 " You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
@@ -186,38 +212,5 @@ endif
 
 " remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
-
-" nerdtree
-let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
-
-" lion save some space
-let b:lion_squeeze_spaces = 1
-
-" Sneak
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
-
-" airline
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_theme='badwolf'
-
-" Syntastic adjustments
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_style_error_symbol = "S"
-let g:syntastic_style_warning_symbol = "s"
-highlight SyntasticStyleWarning term=reverse cterm=bold ctermfg=244 ctermbg=232 gui=bold guifg=#808080 guibg=#080808
-highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
-highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
-highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
-highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
 
 " vim:set ft=vim et sw=2:
