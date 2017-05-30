@@ -38,6 +38,10 @@ set undodir=~/.vim/undo//
 " https://github.com/junegunn/vim-plug/wiki/faq
 call plug#begin('~/.vim/plugged')
 
+""" Color etc.
+" Molokai color scheme for Vim
+Plug 'https://github.com/tomasr/molokai'
+
 " lean & mean status/tabline for vim that's light as air
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
@@ -50,17 +54,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='badwolf'
 
-" Fuzzy file, buffer, mru, tag, etc finder.
-Plug 'https://github.com/kien/ctrlp.vim'
-
 " Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
 Plug 'https://github.com/majutsushi/tagbar'
 
-" Molokai color scheme for Vim
-Plug 'https://github.com/tomasr/molokai'
+" rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
+Plug 'https://github.com/luochen1990/rainbow'
 
-" a solid language pack for vim.
-Plug 'https://github.com/sheerun/vim-polyglot'
+""" Finding file
+" Fuzzy file, buffer, mru, tag, etc finder.
+Plug 'https://github.com/kien/ctrlp.vim'
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -69,6 +71,7 @@ nnoremap <silent> <F5> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
+" everything else
 "  Syntax checking hacks for vim
 Plug 'https://github.com/vim-syntastic/syntastic'
 let g:syntastic_check_on_open = 0
@@ -82,12 +85,6 @@ highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
 highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
 highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
 highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
-
-" Improved nginx vim plugin (incl. syntax highlighting)
-Plug 'https://github.com/chr4/nginx.vim'
-
-" rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
-Plug 'https://github.com/luochen1990/rainbow'
 
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'https://github.com/tpope/vim-fugitive'
@@ -130,6 +127,12 @@ Plug 'https://github.com/honza/vim-snippets'
 Plug 'https://github.com/python-mode/python-mode'
 
 """ Other
+" Improved nginx vim plugin (incl. syntax highlighting)
+Plug 'https://github.com/chr4/nginx.vim'
+
+" a solid language pack for vim.
+Plug 'https://github.com/sheerun/vim-polyglot'
+
 call plug#end()
 
 
