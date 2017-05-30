@@ -13,7 +13,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
-" backupfiles
+" Backup / Swap and Undofiles " {{{
 if !isdirectory(expand('~').'/.vim/backup')
   silent !mkdir -p ~/.vim/backup
 endif
@@ -33,6 +33,7 @@ if !isdirectory(expand('~').'/.vim/undo')
 endif
 set undofile
 set undodir=~/.vim/undo//
+" }}}
 
 " install the plugins
 " https://github.com/junegunn/vim-plug/wiki/faq
@@ -41,10 +42,12 @@ call plug#begin('~/.vim/plugged')
 """ Color etc.
 " Molokai color scheme for Vim
 Plug 'https://github.com/tomasr/molokai'
+syntax on
+silent! colorscheme molokai
 
 " lean & mean status/tabline for vim that's light as air
 Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/vim-airline/vim-airline-themes'
+Plug 'https://github.com/vim-airline/vim-airline-themes' " {{{
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -53,27 +56,29 @@ let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='badwolf'
+" }}}
 
 " Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
 Plug 'https://github.com/majutsushi/tagbar'
 
 " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
 Plug 'https://github.com/luochen1990/rainbow'
+let g:rainbow_active = 1
 
 """ Finding file
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
 
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
-Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }"{{{
 nnoremap <silent> <F4> :NERDTreeToggle<CR>
 nnoremap <silent> <F5> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
-let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
+let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']"}}}
 
 " everything else
 "  Syntax checking hacks for vim
-Plug 'https://github.com/vim-syntastic/syntastic'
+Plug 'https://github.com/vim-syntastic/syntastic'"{{{
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
@@ -84,7 +89,7 @@ highlight SyntasticStyleWarning term=reverse cterm=bold ctermfg=244 ctermbg=232 
 highlight SyntasticStyleError term=reverse ctermbg=235 guibg=#403D3D
 highlight SyntasticWarningSign ctermfg=208 gui=italic guifg=#FD971F
 highlight SyntasticStyleWarningSign ctermfg=11 guifg=Yellow ctermbg=236 guibg=#232526
-highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow
+highlight SyntasticStyleErrorSign term=bold ctermfg=11 gui=bold guifg=Yellow"}}}
 
 " fugitive.vim: a Git wrapper so awesome, it should be illegal
 Plug 'https://github.com/tpope/vim-fugitive'
@@ -135,7 +140,7 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 
 call plug#end()
 
-" tab complet
+" Wildmode / Tab compl. {{{
 set wildmode=list:longest
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
@@ -147,29 +152,21 @@ set wildignore+=vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.png,*.jpg,*.gif"}}}
 
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
-set expandtab
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <expr> <tab> InsertTabWrapper()
-inoremap <s-tab> <c-n>
-
-""" colors
-" https://github.com/joshdick/onedark.vim
-syntax on
-silent! colorscheme molokai
-
-" taste the rainbow
-let g:rainbow_active = 1
+" set expandtab
+" function! InsertTabWrapper()
+"   let col = col('.') - 1
+"   if !col || getline('.')[col - 1] !~ '\k'
+"     return "\<tab>"
+"   else
+"     return "\<c-p>"
+"   endif
+" endfunction
+" inoremap <expr> <tab> InsertTabWrapper()
+" inoremap <s-tab> <c-n>
 
 set autoindent		        " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
