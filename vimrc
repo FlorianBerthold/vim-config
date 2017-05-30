@@ -1,3 +1,4 @@
+" vim: fdm=marker ts=2 sts=2 sw=2 fdl=0
 augroup reload_vimrc " {
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -13,22 +14,28 @@ endif
 
 " The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
 " backupfiles
-if empty(glob('~/.vim/backup'))
+if !isdirectory(expand('~').'/.vim/backup')
   silent !mkdir -p ~/.vim/backup
 endif
-
 set backup
 set backupdir=~/.vim/backup//
 
 " swapfiles
-if empty(glob('~/.vim/swap'))
+if !isdirectory(expand('~').'/.vim/swap')
   silent !mkdir -p ~/.vim/swap
 endif
-
 set swapfile
 set directory=~/.vim/swap//
 
+" undo
+if !isdirectory(expand('~').'/.vim/undo')
+  silent !mkdir -p ~/.vim/undo
+endif
+set undofile
+set undodir=~/.vim/undo
+
 " install the plugins
+" https://github.com/junegunn/vim-plug/wiki/faq
 call plug#begin('~/.vim/plugged')
 
 " lean & mean status/tabline for vim that's light as air
@@ -83,14 +90,14 @@ Plug 'https://github.com/ludovicchabant/vim-gutentags'
 Plug 'https://github.com/justinmk/vim-sneak'
 
 """ Autocomplete and snippets combo
-" Perform all your vim insert mode completions with Tab
-"Plug 'https://github.com/ervandew/supertab'
 " You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
-"Plug 'https://github.com/ajh17/VimCompletesMe'
+Plug 'https://github.com/ajh17/VimCompletesMe'
 " Chained completion that works the way you want!
-Plug 'https://github.com/lifepillar/vim-mucomplete'
+"Plug 'https://github.com/lifepillar/vim-mucomplete'
 " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 Plug 'https://github.com/SirVer/ultisnips'
+" vim-snipmate default snippets (Previously snipmate-snippets)
+Plug 'https://github.com/honza/vim-snippets'
 
 """ Python
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
@@ -111,10 +118,32 @@ nmap <F7> :NERDTreeToggle<cr>
 
 
 " mucomplete
-set completeopt+=menuone
-set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " If Vim beeps during completion
-let g:mucomplete#enable_auto_at_startup = 1
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+set expandtab
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
 
 """ colors
 " https://github.com/joshdick/onedark.vim
@@ -126,7 +155,7 @@ let g:rainbow_active = 1
 
 set autoindent		        " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
-set backspace=indent,eol,start	" backspace behaviour
+set backspace=indent,eol,start	" allow backspace in insert mode
 "set complete-=i
 set copyindent
 set display+=lastline
@@ -150,7 +179,6 @@ set softtabstop=2	        " number of spaces per tab
 set tabpagemax=50
 set undolevels=1000	        " number of undo levels
 set visualbell		        " use visual bell (no beeping)
-set wildmenu
 
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
