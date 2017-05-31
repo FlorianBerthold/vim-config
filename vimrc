@@ -2,36 +2,36 @@
 
 " Auto reload vimrc on save{{{
 augroup reload_vimrc " {
-  autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+	autocmd!
+	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }}}}
 
 " Install the plugin manager{{{
 " specify a directory for plugins (for neovim: ~/.local/share/nvim/plugged)
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif"}}}
 
 " Backup / Swap and Undofiles " {{{
 " The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
 if !isdirectory(expand('~').'/.vim/backup')
-  silent !mkdir -p ~/.vim/backup
+	silent !mkdir -p ~/.vim/backup
 endif
 set backup
 set backupdir=~/.vim/backup//
 
 " swapfiles
 if !isdirectory(expand('~').'/.vim/swap')
-  silent !mkdir -p ~/.vim/swap
+	silent !mkdir -p ~/.vim/swap
 endif
 set swapfile
 set directory=~/.vim/swap//
 
 " undo
 if !isdirectory(expand('~').'/.vim/undo')
-  silent !mkdir -p ~/.vim/undo
+	silent !mkdir -p ~/.vim/undo
 endif
 set undofile
 set undodir=~/.vim/undo//
@@ -50,7 +50,7 @@ Plug 'https://github.com/vim-airline/vim-airline' "
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
@@ -120,9 +120,14 @@ map F <Plug>Sneak_S
 
 """ Autocomplete and snippets combo
 " You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
-Plug 'https://github.com/ajh17/VimCompletesMe'
+"Plug 'https://github.com/ajh17/VimCompletesMe'
 " Chained completion that works the way you want!
-"Plug 'https://github.com/lifepillar/vim-mucomplete'
+Plug 'https://github.com/lifepillar/vim-mucomplete'
+set completeopt-=preview
+set completeopt+=longest,menuone,noinsert,noselect
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+
 " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 Plug 'https://github.com/SirVer/ultisnips'
 " vim-snipmate default snippets (Previously snipmate-snippets)
@@ -158,21 +163,29 @@ set wildignore+=vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif"}}}
+set wildignore+=*.png,*.jpg,*.gifzo
+"}}}
 
-" Multipurpose tab {{{
-" Indent if we're at the beginning of a line. Else, do completion.
-" set expandtab
-" function! InsertTabWrapper()
-"   let col = col('.') - 1
-"   if !col || getline('.')[col - 1] !~ '\k'
-"     return "\<tab>"
-"   else
-"     return "\<c-p>"
-"   endif
-" endfunction
-" inoremap <expr> <tab> InsertTabWrapper()
-" inoremap <s-tab> <c-n>}}}
+"  Autocomplete with TAB when typing words {{{
+"Use TAB to complete when typing words, else inserts TABs as usual.
+"Uses dictionary and source files to find matching words to complete.
+
+"See help completion for source,
+"Note: usual completion is on <C-n> but more trouble to press all the time.
+"Never type the same word twice and maybe learn a new spellings!
+"Use the Linux dictionary when spelling is in doubt.
+"Window users can copy the file to their machine.
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+:set dictionary="/usr/dict/words"
+" }}}
+
 
 set autoindent		        " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
@@ -201,7 +214,7 @@ set undolevels=1000	        " number of undo levels
 set visualbell		        " use visual bell (no beeping)
 
 if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 
 " remove trailing whitespaces
