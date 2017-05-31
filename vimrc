@@ -12,9 +12,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif"}}}
+endif "}}}
 
-" Backup / Swap and Undofiles " {{{
+"  Backup / Swap and Undofiles " {{{
 " The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
 if !isdirectory(expand('~').'/.vim/backup')
 	silent !mkdir -p ~/.vim/backup
@@ -121,6 +121,7 @@ map F <Plug>Sneak_S
 """ Autocomplete and snippets combo
 " You don't Complete Me; Vim Completes Me! A super simple, super minimal, super light-weight tab completion plugin for Vim.
 "Plug 'https://github.com/ajh17/VimCompletesMe'
+
 " Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 set completeopt-=preview
@@ -128,8 +129,30 @@ set completeopt+=longest,menuone,noinsert,noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
+" which would always scan tags and included files, you might use:
+"set complete+=i
+"set complete+=t
+"let g:mucomplete#chains = { 'default' : ['c-p'] }
+
+" searching included files and/or tags will happen only when
+" completion cannot be performed otherwise.
+"set complete-=i
+"set complete-=t
+"let g:mucomplete#chains = { 'default' : ['c-p', 'incl', 'tags'] }
+
+" simulate ZSH behaviour for 'file' completion?
+function! IsBehindDir()
+	return strpart(getline('.'), 0, col('.') - 1)  =~# '\f\+/$'
+endfunction
+
+imap <expr> / pumvisible() && IsBehindDir()
+			\ ? "\<c-y>\<plug>(MUcompleteFwd)"
+			\ : '/'
+
 " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 Plug 'https://github.com/SirVer/ultisnips'
+
+
 " vim-snipmate default snippets (Previously snipmate-snippets)
 Plug 'https://github.com/honza/vim-snippets'
 
@@ -166,6 +189,10 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gifzo
 "}}}
 
+" edit vimrc/zshrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ez :vsp ~/.zshrc<CR>
+"nnoremap <leader>sv :source $MYVIMRC<CR>
 
 set autoindent		              " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
