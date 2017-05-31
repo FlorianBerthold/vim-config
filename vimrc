@@ -188,19 +188,43 @@ call plug#end()
 syntax on
 silent! colorscheme molokai
 
-" Wildmode / Tab compl. {{{
+" Wildmode, ignore stuff {{{
+set wildmenu
 set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.png,*.jpg,*.gifzo
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip         " MacOSX/Linux
+set wildignore+=*DS_Store*
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe      " Windows
+set wildignore+=*sass-cache*
+set wildignore+=*vim/backup*
+" https://github.com/tpope/vim-vinegar/issues/61
+" set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=.ropeproject                     " py rope cache dir
+set wildignore+=log/**
+set wildignore+=migrations                       " Django migrations
+set wildignore+=node_modules                     " node_modules dir
+set wildignore+=tmp/**
+set wildignore+=vendor/cache/**
+set wildignore+=vendor/rails/**
+set wildignore+=*.o,*.obj,*~                      "stuff to ignore when tab completing
+set wildignore+=*Library/**
+set wildignore+=*.mp3,*.flac
+
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+			\ 'file': '\v\.(exe|so|dll)$',
+			\ 'link': 'some_bad_symbolic_links',
+			\ }
 "}}}
 
 " edit vimrc/zshrc and load vimrc bindings
