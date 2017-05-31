@@ -189,6 +189,7 @@ syntax on
 silent! colorscheme molokai
 
 " Wildmode, ignore stuff {{{
+" http://vimdoc.sourceforge.net/htmldoc/options.html#%27wildignore%27
 set wildmenu
 set wildmode=list:longest
 set wildignore+=*.DS_Store                       " OSX bullshit
@@ -217,6 +218,8 @@ set wildignore+=vendor/rails/**
 set wildignore+=*.o,*.obj,*~                      "stuff to ignore when tab completing
 set wildignore+=*Library/**
 set wildignore+=*.mp3,*.flac
+set wildignore+=*.stl
+set wildignore+=*.pdf,*.doc,*.docx,*.xls,*.xlsx
 
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
