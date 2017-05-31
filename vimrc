@@ -187,31 +187,31 @@ endfunction
 " }}}
 
 
-set autoindent		        " auto-indent new lines
+set autoindent		              " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
 set backspace=indent,eol,start	" allow backspace in insert mode
 set copyindent
 set display+=lastline
 set encoding=utf-8
-set gcr=a:blinkon0	        " disable cursor blink
-set history=1000 	        " store lots of :cmdline history
-set hlsearch		        " highlight all search results
-set ignorecase		        " always case-insensitive
-set incsearch		        " searches for strings incrementally
+set gcr=a:blinkon0	            " disable cursor blink
+set history=1000 	              " store lots of :cmdline history
+set hlsearch		                " highlight all search results
+set ignorecase		              " always case-insensitive
+set incsearch		                " searches for strings incrementally
 set laststatus=2
 set nrformats-=octal
-set number		        " show line numbers
-set ruler		        " show row and column ruler information
-set shiftwidth=2	        " number of auto-indent spaces
+set number		                  " show line numbers
+set ruler		                    " show row and column ruler information
+set shiftwidth=2	              " number of auto-indent spaces
 set showcmd                     " show command in bottom bar
-set showmatch		        " highlight matching brace
-set smartcase		        " enable smart-case search
-set smartindent		        " enable smart-indent
-set smarttab		        " enable smart-tabs
-set softtabstop=2	        " number of spaces per tab
+set showmatch		                " highlight matching brace
+set smartcase		                " enable smart-case search
+set smartindent		              " enable smart-indent
+set smarttab		                " enable smart-tabs
+set softtabstop=2	              " number of spaces per tab
 set tabpagemax=50
-set undolevels=1000	        " number of undo levels
-set visualbell		        " use visual bell (no beeping)
+set undolevels=1000	            " number of undo levels
+set visualbell		              " use visual bell (no beeping)
 
 if &listchars ==# 'eol:$'
 	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
