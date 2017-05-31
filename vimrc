@@ -199,6 +199,7 @@ set hlsearch		                " highlight all search results
 set ignorecase		              " always case-insensitive
 set incsearch		                " searches for strings incrementally
 set laststatus=2
+set lazyredraw                  " redraw only when we need to
 set nrformats-=octal
 set number		                  " show line numbers
 set ruler		                    " show row and column ruler information
