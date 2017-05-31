@@ -129,6 +129,11 @@ set completeopt+=longest,menuone,noinsert,noselect
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 
+" For automatic completion, you also need to put these in your vimrc:
+inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
+inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
+inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
+
 " which would always scan tags and included files, you might use:
 "set complete+=i
 "set complete+=t
@@ -149,9 +154,18 @@ imap <expr> / pumvisible() && IsBehindDir()
 			\ ? "\<c-y>\<plug>(MUcompleteFwd)"
 			\ : '/'
 
+" To use, say, <left> and <right> as cycling keys, use the following:
+inoremap <silent> <plug>(MUcompleteFwdKey) <right>
+imap <right> <plug>(MUcompleteCycFwd)
+inoremap <silent> <plug>(MUcompleteBwdKey) <left>
+imap <left> <plug>(MUcompleteCycBwd)
+
 " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 Plug 'https://github.com/SirVer/ultisnips'
 
+"let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsJumpForwardTrigger="<C-J>"
+let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 
 " vim-snipmate default snippets (Previously snipmate-snippets)
 Plug 'https://github.com/honza/vim-snippets'
