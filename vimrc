@@ -66,10 +66,14 @@ let g:rainbow_active = 1
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
 
+" dont change work dir, use the one where vim started
+let g:ctrlp_working_path_mode = 0
+
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-nnoremap <silent> <F4> :NERDTreeToggle<CR>
-nnoremap <silent> <F5> :NERDTreeFind<CR>
+map <silent> <F2> mzgg=G`z
+nnoremap <silent> <F6> :NERDTreeToggle<CR>
+nnoremap <silent> <F7> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
@@ -101,6 +105,9 @@ Plug 'https://github.com/tpope/vim-eunuch'
 " A simple alignment operator for Vim text editor
 Plug 'https://github.com/tommcdo/vim-lion'
 let b:lion_squeeze_spaces = 1
+" howto fucking map this shit right ? ... -.-
+map <silent> <F3> mzglip=<Space>`z
+map <silent> <F4> mzglip=<Space>`z
 
 " commentary.vim: comment stuff out
 Plug 'https://github.com/tpope/vim-commentary'
