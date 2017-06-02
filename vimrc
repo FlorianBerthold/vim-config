@@ -105,9 +105,10 @@ Plug 'https://github.com/tpope/vim-eunuch'
 " A simple alignment operator for Vim text editor
 Plug 'https://github.com/tommcdo/vim-lion'
 let b:lion_squeeze_spaces = 1
+let g:lion_squeeze_spaces = 1
 " howto fucking map this shit right ? ... -.-
 map <silent> <F3> mzglip=<Space>`z
-map <silent> <F4> mzglip=<Space>`z
+map <silent> <F4> mzgLip=<Space>`z
 
 " commentary.vim: comment stuff out
 Plug 'https://github.com/tpope/vim-commentary'
@@ -241,6 +242,12 @@ let g:ctrlp_custom_ignore = {
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
 "nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" Linenumbers, toggle toggle toggle
+nmap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
+
 
 set autoindent		              " auto-indent new lines
 set autoread                    " autoload file changes. you can undo by pressing u.
