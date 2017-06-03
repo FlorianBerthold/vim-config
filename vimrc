@@ -16,23 +16,17 @@ endif "}}}
 
 "  Backup / Swap and Undofiles " {{{
 " The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
-if !isdirectory(expand('~').'/.vim/backup')
-	silent !mkdir -p ~/.vim/backup
-endif
+silent !mkdir -p ~/.vim/backup
 set backup
 set backupdir=~/.vim/backup//
 
 " swapfiles
-if !isdirectory(expand('~').'/.vim/swap')
-	silent !mkdir -p ~/.vim/swap
-endif
+silent !mkdir -p ~/.vim/swap
 set swapfile
 set directory=~/.vim/swap//
 
 " undo
-if !isdirectory(expand('~').'/.vim/undo')
-	silent !mkdir -p ~/.vim/undo
-endif
+silent !mkdir -p ~/.vim/undo
 set undofile
 set undodir=~/.vim/undo//
 " }}}
@@ -54,12 +48,11 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme='badwolf'
 
 " rainbow parentheses improved, shorter code, no level limit, smooth and fast, powerful configuration.
-Plug 'https://github.com/luochen1990/rainbow'
-let g:rainbow_active = 1
+"Plug 'https://github.com/luochen1990/rainbow'
+"let g:rainbow_active = 1
 "}}}
 
 """ Finding file
@@ -189,54 +182,15 @@ Plug 'https://github.com/chr4/nginx.vim'
 " a solid language pack for vim.
 Plug 'https://github.com/sheerun/vim-polyglot'
 
+" repeat.vim: enable repeating supported plugin maps with
+Plug 'https://github.com/tpope/vim-repeat'
+
 call plug#end()
-"}}}
+" }}}
 
 " Enable colors and select theme
 syntax on
 silent! colorscheme molokai
-
-" Wildmode, ignore stuff {{{
-" http://vimdoc.sourceforge.net/htmldoc/options.html#%27wildignore%27
-set wildmenu
-set wildmode=list:longest
-set wildignore+=*.DS_Store                       " OSX bullshit
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
-set wildignore+=*.gem
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.png,*.jpg,*.gifzo
-set wildignore+=*.pyc                            " Python byte code
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip         " MacOSX/Linux
-set wildignore+=*DS_Store*
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe      " Windows
-set wildignore+=*sass-cache*
-set wildignore+=*vim/backup*
-" https://github.com/tpope/vim-vinegar/issues/61
-" set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=.ropeproject                     " py rope cache dir
-set wildignore+=log/**
-set wildignore+=migrations                       " Django migrations
-set wildignore+=node_modules                     " node_modules dir
-set wildignore+=tmp/**
-set wildignore+=vendor/cache/**
-set wildignore+=vendor/rails/**
-set wildignore+=*.o,*.obj,*~                      "stuff to ignore when tab completing
-set wildignore+=*Library/**
-set wildignore+=*.mp3,*.flac
-set wildignore+=*.stl
-set wildignore+=*.pdf,*.doc,*.docx,*.xls,*.xlsx
-
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(exe|so|dll)$',
-			\ 'link': 'some_bad_symbolic_links',
-			\ }
-"}}}
 
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
@@ -244,7 +198,7 @@ nnoremap <leader>ez :vsp ~/.zshrc<CR>
 "nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Linenumbers, toggle toggle toggle
-nmap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
+nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 :au FocusLost * :set number
 :au FocusGained * :set relativenumber
 
@@ -262,6 +216,12 @@ set ignorecase		              " always case-insensitive
 set incsearch		                " searches for strings incrementally
 set laststatus=2
 set lazyredraw                  " redraw only when we need to
+set mouse=a
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 set nrformats-=octal
 set number		                  " show line numbers
 set ruler		                    " show row and column ruler information
