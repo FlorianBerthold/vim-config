@@ -141,9 +141,9 @@ set visualbell		               " use visual bell (no beeping)
 
 " for my debian server (vim 7.3)
 if v:version < 800
-	set belloff+=ctrlg " If Vim beeps during completion
+"	set belloff+=ctrlg             " If Vim beeps during completion
 	set completeopt=menuone,preview,noinsert
-	set termguicolors								 " true colors support
+	set termguicolors						   " true colors support
 endif
 
 " set the mouse
