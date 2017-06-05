@@ -16,62 +16,71 @@ endif "}}}
 " https://github.com/junegunn/vim-plug/wiki/faq
 call plug#begin('~/.vim/plugged')
 
-" Molokai color scheme for Vim
+" molokai - color scheme for Vim
 Plug 'https://github.com/tomasr/molokai'
 
-" Retro groove color scheme for Vim
+" gruvbox - Retro groove color scheme for Vim
 Plug 'https://github.com/morhetz/gruvbox'
 
-" lean & mean status/tabline for vim that's light as air
+" AirLine - lean & mean status/tabline for vim that's light as air
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 
-" Fuzzy file, buffer, mru, tag, etc finder.
+" ablolish.vim - word variant manipulation... hard to explain, check the link.
+Plug 'https://github.com/tpope/tpope-vim-abolish'
+
+" characterize.vim - Unicode character metadata
+Plug 'https://github.com/tpope/vim-characterize'
+
+" Ctrl+P - Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
 
-" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+" NERDTree - A tree explorer plugin for vim.
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-" Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
-Plug 'https://github.com/majutsushi/tagbar'
-
-"  Syntax checking hacks for vim
+" syntastic - Syntax checking hacks for vim
 Plug 'https://github.com/vim-syntastic/syntastic'
 
-" fugitive.vim: a Git wrapper so awesome, it should be illegal
+" fugitive.vim - a Git wrapper so awesome, it should be illegal
 Plug 'https://github.com/tpope/vim-fugitive'
 
-" eunuch.vim: helpers for UNIX
+" eunuch.vim - helpers for UNIX
 Plug 'https://github.com/tpope/vim-eunuch'
 
-" A simple alignment operator for Vim text editor
+" lion - A simple alignment operator for Vim text editor
 Plug 'https://github.com/tommcdo/vim-lion'
 
-" commentary.vim: comment stuff out
+" commentary.vim - comment stuff out
 Plug 'https://github.com/tpope/vim-commentary'
 
-" surround.vim: quoting/parenthesizing made simple
+" surround.vim - quoting/parenthesizing made simple
 Plug 'https://github.com/tpope/vim-surround'
 
 " A Vim plugin that manages your tag files
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
 
-" The missing motion for Vim 👟
+" Tagbar - Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
+Plug 'https://github.com/majutsushi/tagbar'
+
+" TTags - Tag list browser for VIM (List, filter, preview, jump to tags)
+Plug 'https://github.com/tomtom/ttags_vim'
+
+" sneak - The missing motion for Vim 👟
 Plug 'https://github.com/justinmk/vim-sneak'
 
-" Chained completion that works the way you want!
+" mucomplete - Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 
 " UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 Plug 'https://github.com/SirVer/ultisnips'
 
-" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
+" python-mode - PyLint, Rope, Pydoc, breakpoints from box.
 Plug 'https://github.com/python-mode/python-mode'
 
-" a solid language pack for vim.
+" polyglot - a solid language pack for vim.
 Plug 'https://github.com/sheerun/vim-polyglot'
 
-" repeat.vim: enable repeating supported plugin maps with
+" repeat.vim - enable repeating supported plugin maps with
 Plug 'https://github.com/tpope/vim-repeat'
 
 " Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
