@@ -56,7 +56,7 @@ Plug 'https://github.com/tpope/vim-commentary'
 " surround.vim - quoting/parenthesizing made simple
 Plug 'https://github.com/tpope/vim-surround'
 
-" A Vim plugin that manages your tag files
+" Gutentags - A Vim plugin that manages your tag files
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
 
 " Tagbar - Vim plugin that displays tags in a window, ordered by scope http://majutsushi.github.io/tagbar/
@@ -83,7 +83,10 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 " repeat.vim - enable repeating supported plugin maps with
 Plug 'https://github.com/tpope/vim-repeat'
 
-" Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
+" unimpaired.vim - pairs of handy bracket mappings
+Plug 'https://github.com/tpope/vim-unimpaired'
+
+" Whitespaces -  Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plug 'https://github.com/bronson/vim-trailing-whitespace'
 
 call plug#end()
@@ -221,3 +224,7 @@ highlight SyntasticStyleError       term=reverse ctermbg=235  guibg=#403D3D
 highlight SyntasticWarningSign      ctermfg=208  gui=italic   guifg=#FD971F
 highlight SyntasticStyleWarningSign ctermfg=11   guifg=Yellow ctermbg=236 guibg=#232526
 highlight SyntasticStyleErrorSign   term=bold    ctermfg=11   gui=bold    guifg=Yellow
+
+
+""" Tagbar
+nmap <F8> :TagbarToggle<CR>
