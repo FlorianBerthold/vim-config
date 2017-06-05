@@ -11,6 +11,8 @@ aptitude install vim -y
 
 On OSX via Brew
 ```
+brew tap universal-ctags/universal-ctags
+brew install --HEAD universal-ctags
 brew install vim
 ```
 
