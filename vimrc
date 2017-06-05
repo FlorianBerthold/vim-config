@@ -116,7 +116,6 @@ nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 set autoindent                   " auto-indent new lines
 set autoread                     " autoload file changes. you can undo by pressing u.
 set backspace=indent,eol,start	 " allow backspace in insert mode
-set completeopt=menuone,preview,noinsert
 set display+=lastline
 set encoding=utf-8               " utf-8 as a minimum
 set gcr=a:blinkon0	             " disable cursor blink
@@ -137,9 +136,15 @@ set smartindent		               " enable smart-indent
 set smarttab		                 " enable smart-tabs
 set softtabstop=2	               " number of spaces per tab
 set tabstop=2
-set termguicolors								 " true colors support
 set undolevels=1000	             " number of undo levels
 set visualbell		               " use visual bell (no beeping)
+
+" for my debian server (vim 7.3)
+if v:version < 800
+	set belloff+=ctrlg " If Vim beeps during completion
+	set completeopt=menuone,preview,noinsert
+	set termguicolors								 " true colors support
+endif
 
 " set the mouse
 if has("mouse_sgr")
@@ -151,8 +156,8 @@ end
 " map leader to Space bar
 let mapleader="\<Space>"
 
-" map global indent
-noremap <silent> <F2> mzgg=G`z
+" map global indent and fix the trailing whitespaces
+noremap <silent> <F2> mzgg=G`z <bar> :FixWhitespace <CR>
 
 
 """ Airline
@@ -180,7 +185,6 @@ nnoremap <silent> <F7> :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 "set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " If Vim beeps during completion
 
 
 """ mucomplete
