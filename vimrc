@@ -12,6 +12,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif "}}}
 
+" map leader to Space bar, needs to bedone befor the first mapping
+let mapleader="\<Space>"
+
 " Install the plugins and config them {{{
 " https://github.com/junegunn/vim-plug/wiki/faq
 call plug#begin('~/.vim/plugged')
@@ -86,11 +89,18 @@ Plug 'https://github.com/tpope/vim-repeat'
 " unimpaired.vim - pairs of handy bracket mappings
 Plug 'https://github.com/tpope/vim-unimpaired'
 
+" undotree - The ultimate undo history visualizer for VIM
+Plug 'https://github.com/mbbill/undotree'
+
 " Whitespaces -  Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
 Plug 'https://github.com/bronson/vim-trailing-whitespace'
 
+" Salt - Vim files for editing Salt files
+Plug 'https://github.com/saltstack/salt-vim'
+
 call plug#end()
 " }}}
+
 
 " Enable colors and select theme, because vim 7 does not enable it
 syntax on
@@ -98,6 +108,7 @@ syntax on
 let g:gruvbox_contrast_dark='hard'
 set background=dark
 silent! colorscheme gruvbox
+
 
 """  Backup / Swap and Undofiles
 " The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
@@ -114,7 +125,7 @@ set directory=~/.vim/swap//
 silent !mkdir -p ~/.vim/undo
 set undofile
 set undodir=~/.vim/undo//
-
+ 
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
@@ -165,9 +176,6 @@ else
 	set ttymouse=xterm2
 end
 
-" map leader to Space bar
-let mapleader="\<Space>"
-
 " map global indent and fix the trailing whitespaces
 noremap <silent> <F2> mzgg=G`z <bar> :FixWhitespace <CR>
 
@@ -178,7 +186,7 @@ if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = -1
 let g:airline_theme='badwolf'
 
 
@@ -227,4 +235,7 @@ highlight SyntasticStyleErrorSign   term=bold    ctermfg=11   gui=bold    guifg=
 
 
 """ Tagbar
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
+
+""" Undotree
+nnoremap <F5> :UndotreeToggle<cr>
