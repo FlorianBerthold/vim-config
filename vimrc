@@ -136,6 +136,9 @@ nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 :au FocusLost * :set number
 :au FocusGained * :set relativenumber
 
+" 
+filetype plugin indent on
+
 set autoindent                   " auto-indent new lines
 set autoread                     " autoload file changes. you can undo by pressing u.
 set backspace=indent,eol,start	 " allow backspace in insert mode
