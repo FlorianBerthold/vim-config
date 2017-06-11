@@ -1,6 +1,3 @@
-" vim: set fdm=expr fdl=-3 :
-:set foldexpr=getline(v:lnum)=~'^\\s*$'&&getline(v:lnum+1)=~'\\S'?'<1':1
-
 " Mappings:
 " Map - leader to space
 let mapleader=" "
@@ -11,27 +8,19 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Linenumbers, toggle toggle toggle
 nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " map global indent and fix the trailing whitespaces
-noremap  <silent> <F2> mzgg=G`z <bar> :FixWhitespace <CR>
-" fold selector
+noremap  <silent> <F2> mzgg=G`z <bar> retab <bar> :WhitespaceStrip <CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :NERDTreeFind<CR>
-nnoremap <F8> :TagbarToggle<CR>
-
-" Auto reload vimrc on save
-" augroup reload_vimrc " {
-" 	autocmd!
-" 	autocmd BufWritePost $MYVIMRC source $MYVIMRC
-" augroup END
-"
+nnoremap <silent> <F8> :TagbarToggle<CR>
 " Yank selectors
 vnoremap // y/<C-R>\"\"\"<CR>
 
 " Plugins:
 " https://github.com/junegunn/vim-plug/wiki/faq
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
 
@@ -43,7 +32,7 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = -1
@@ -53,6 +42,9 @@ let g:airline_theme='badwolf'
 Plug 'https://github.com/kien/ctrlp.vim'
 " dont change work dir, use the one where vim started
 let g:ctrlp_working_path_mode = 0
+
+""" Colorizer         - CSS Color highlighting
+let g:colorizer_auto_filetype = 'css,html'
 
 """ Commentary.vim    - Comment stuff out
 Plug 'https://github.com/tpope/vim-commentary'
@@ -80,9 +72,9 @@ Plug 'https://github.com/tomasr/molokai'
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#chains = {
-			\ 'default' : ['path', 'ulti', 'omni', 'keyn', 'dict', 'uspl'],
-			\ 'vim'     : ['path', 'cmd', 'keyn']
-			\ }
+      \ 'default' : ['path', 'ulti', 'omni', 'keyn', 'dict', 'uspl'],
+      \ 'vim'     : ['path', 'cmd', 'keyn']
+      \ }
 inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
 inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
 inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
@@ -95,7 +87,7 @@ let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 """ Salt              - Vim files for editing Salt files
 Plug 'https://github.com/saltstack/salt-vim'
 
-""" Sneak             - The missing motion for Vim 👟
+""" Sneak             - The missing motion for Vim
 Plug 'https://github.com/justinmk/vim-sneak'
 
 """ Surround.vim      - Quoting/parenthesizing made simple
@@ -142,16 +134,9 @@ Plug 'https://github.com/tpope/vim-unimpaired'
 Plug 'https://github.com/mbbill/undotree'
 nnoremap <F5> :UndotreeToggle<cr>
 
-""" Whitespaces       - Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
-Plug 'https://github.com/bronson/vim-trailing-whitespace'
+""" Whitespaces       - No description, website, or bullshit provided.
+Plug 'https://github.com/720720/whitespace'
 call plug#end()
-
-" Colors:
-syntax on
-" silent! colorscheme molokai
-let g:gruvbox_contrast_dark='hard'
-set background=dark
-silent! colorscheme gruvbox
 
 
 " Backup / Swap / Undo-files:
@@ -162,78 +147,90 @@ set backupdir=~/.vim/backup//
 silent !mkdir -p ~/.vim/swap
 set swapfile
 set directory=~/.vim/swap//
+" Write swap files after 5 seconds of inactivity.
+set updatetime=5000
 silent !mkdir -p ~/.vim/undo
 set undofile
 set undodir=~/.vim/undo//
 
-" Settings:
-set autoindent                   " auto-indent new lines
-set autoread                     " autoload file changes. you can undo by pressing u.
-set backspace=indent,eol,start	 " allow backspace in insert mode
+
+" Colors:
+syntax on
+" silent! colorscheme molokai
+let g:gruvbox_contrast_dark='hard'
+set background=dark
+silent! colorscheme gruvbox
+
+
+" Filetype:
+filetype on        " Enable filetype detection,
+filetype indent on " Use filetype-specific indenting where available,
+filetype plugin on " Also allow for filetype-specific plugins,
+
+
+" Set:
+set autoindent                   " Auto-indent new lines
+set autoread                     " Autoload file changes. you can undo by pressing u.
+set backspace=indent,eol,start   " Allow backspace in insert mode
 set display+=lastline
-set encoding=utf-8               " utf-8 as a minimum
-set gcr=a:blinkon0	             " disable cursor blink
-set history=1000 	               " store lots of :cmdline history
-set hlsearch		                 " highlight all search results
-set ignorecase		               " always case-insensitive
-set incsearch		                 " searches for strings incrementally
+set encoding=utf-8               " Utf-8 as a minimum
+set expandtab
+set gcr=a:blinkon0               " Disable cursor blink
+set history=1000                 " Store lots of :cmdline history
+set hlsearch                     " Highlight all search results
+set ignorecase                   " Always case-insensitie
+set incsearch                    " Searches for strings incrementally
 set laststatus=2
-set lazyredraw                   " redraw only when we need to
-set mouse=                       " i dont want a mouse
-set number		                   " show line numbers
-set ruler		                     " show row and column ruler information
-set shiftwidth=2	               " number of auto-indent spaces
-set showcmd                      " show command in bottom bar
-set showmatch		                 " highlight matching brace
-set smartcase		                 " enable smart-case search
-set smartindent		               " enable smart-indent
-set smarttab		                 " enable smart-tabs
-set softtabstop=2	               " number of spaces per tab
+set lazyredraw                   " avoid redrawing the screen mid-command.
+set mouse=                       " In normal and visual mode
+set nocompatible                 " Stop behaving like vi
+set number                       " Show line numbers
+set numberwidth=1                " using only 1 column (and 1 space) while possible
+set ruler                        " Show row and column ruler information
+set shiftwidth=2                 " Number of auto-indent spaces
+set showcmd                      " Show command in bottom bar
+set showmatch                    " Highlight matching brace
+set shortmess+=a                 " Use [+]/[RO]/[w] for modified/readonly/written.
+set smartcase                    " Enable smart-case search
+set smartindent                  " Enable smart-indent
+set smarttab                     " Enable smart-tabs
+set splitright                   " New windows open to the right of the current one
+set softtabstop=2                " Number of spaces per tab
 set tabstop=2
-set undolevels=1000	             " number of undo levels
-set visualbell		               " use visual bell (no beeping)
-" set the mouse
+set title                        " Turn on titlebar support
+set undolevels=1000              " Number of undo levels
+set visualbell                   " Use visual bell (no beeping)
+set virtualedit=block            " Let cursor move past the last char in <C-v> mode
+set wrap
 if has("mouse_sgr")
-	set ttymouse=sgr
+  set ttymouse=sgr
 else
-	set ttymouse=xterm2
+  set ttymouse=xterm2
 end
 
 
-" For vim 7.3:
-if v:version >= 800
-	set belloff+=ctrlg             " If Vim beeps during completion
-	set completeopt=menuone,preview,noinsert
-	set termguicolors						   " true colors support
+" Unicode Tab Test:
+if &enc =~ '^u\(tf\|cs\)'   " When running in a Unicode environment,
+  set list                  " visually represent certain invisible characters:
+  let s:arr = nr2char(9655) " using U+25B7 (▷) for an arrow, and
+  let s:dot = nr2char(8901) " using U+22C5 (⋅) for a very light dot,
+  " display tabs as an arrow followed by some dots (▷⋅⋅⋅⋅⋅⋅⋅),
+  exe "set listchars=tab:"    . s:arr . s:dot
+  " and display trailing and non-breaking spaces as U+22C5 (⋅).
+  exe "set listchars+=trail:" . s:dot
+  exe "set listchars+=nbsp:"  . s:dot
+  " Also show an arrow+space (↪ ) at the beginning of any wrapped long lines?
+  " I don't like this, but I probably would if I didn't use line numbers.
+  " let &sbr=nr2char(8618).' '
 endif
 
-" FoldText
-set foldtext=FoldText()
-function! FoldText()
-	let l:lpadding = &fdc
-	redir => l:signs
-	execute 'silent sign place buffer='.bufnr('%')
-	redir End
-	let l:lpadding += l:signs =~ 'id=' ? 2 : 0
-	if exists("+relativenumber")
-		if (&number)
-			let l:lpadding += max([&numberwidth, strlen(line('$'))]) + 1
-		elseif (&relativenumber)
-			let l:lpadding += max([&numberwidth, strlen(v:foldstart - line('w0')), strlen(line('w$') - v:foldstart), strlen(v:foldstart)]) + 1
-		endif
-	else
-		if (&number)
-			let l:lpadding += max([&numberwidth, strlen(line('$'))]) + 1
-		endif
-	endif
-	let l:start = substitute(getline(v:foldstart), '\t', repeat(' ', &tabstop), 'g')
-	let l:end = substitute(substitute(getline(v:foldend), '\t', repeat(' ', &tabstop), 'g'), '^\s*', '', 'g')
-	let l:info = ' (' . (v:foldend - v:foldstart) . ')'
-	let l:infolen = strlen(substitute(l:info, '.', 'x', 'g'))
-	let l:width = winwidth(0) - l:lpadding - l:infolen
-	let l:separator = ' … '
-	let l:separatorlen = strlen(substitute(l:separator, '.', 'x', 'g'))
-	let l:start = strpart(l:start , 0, l:width - strlen(substitute(l:end, '.', 'x', 'g')) - l:separatorlen)
-	let l:text = l:start . ' … ' . l:end
-	return l:text . repeat(' ', l:width - strlen(substitute(l:text, ".", "x", "g"))) . l:info
-endfunction
+" vim 7.3:
+if v:version >= 800
+  set belloff+=ctrlg             " If Vim beeps during completion
+  set completeopt=menuone,preview,noinsert
+  set termguicolors              " True colors support
+  set ttyfast                    " Indicates a fast terminal connection.
+endif
+
+" vim: set fdm=expr fdl=-3 :
+set foldexpr=getline(v:lnum)=~'^\\s*$'&&getline(v:lnum+1)=~'\\S'?'<1':1
