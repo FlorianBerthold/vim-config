@@ -1,4 +1,4 @@
-" Mappings:
+"Mappings:
 " Map - leader to space
 let mapleader=" "
 " edit vimrc/zshrc and load vimrc bindings
@@ -67,6 +67,9 @@ let g:lion_squeeze_spaces = 1
 
 """ Molokai           - Color scheme for Vim
 Plug 'https://github.com/tomasr/molokai'
+
+""" Moonfly           - A dark color scheme for Vim
+Plug 'https://github.com/bluz71/vim-moonfly-colors'
 
 """ Mucomplete        - Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
@@ -155,17 +158,11 @@ set undodir=~/.vim/undo//
 
 
 " Colors:
-syntax on
 " silent! colorscheme molokai
 let g:gruvbox_contrast_dark='hard'
 set background=dark
-silent! colorscheme gruvbox
-
-
-" Filetype:
-filetype on        " Enable filetype detection,
-filetype indent on " Use filetype-specific indenting where available,
-filetype plugin on " Also allow for filetype-specific plugins,
+" silent! colorscheme gruvbox
+silent! colorscheme moonfly
 
 
 " Set:
