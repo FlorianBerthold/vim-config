@@ -28,15 +28,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/tpope/tpope-vim-abolish'
 
 """ AirLine           - Lean & mean status/tabline for vim that's light as air
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-let g:airline#extensions#tabline#enabled = -1
-let g:airline_theme='badwolf'
+" Plug 'https://github.com/vim-airline/vim-airline'
+" Plug 'https://github.com/vim-airline/vim-airline-themes'
+" let g:airline_powerline_fonts = 1
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.space = "\ua0"
+" let g:airline#extensions#tabline#enabled = -1
+" let g:airline_theme='badwolf'
 
 """ Ctrl+P            - Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
@@ -70,6 +70,9 @@ Plug 'https://github.com/tomasr/molokai'
 
 """ Moonfly           - A dark color scheme for Vim
 Plug 'https://github.com/bluz71/vim-moonfly-colors'
+
+""" Moonfly-Statusbar - A simple statusline for Vim with moonfly colors
+Plug 'https://github.com/bluz71/vim-moonfly-statusline'
 
 """ Mucomplete        - Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
