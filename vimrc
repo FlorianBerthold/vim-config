@@ -8,8 +8,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Linenumbers, toggle toggle toggle
 nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " map global indent and fix the trailing whitespaces
-noremap  <silent> <F2> mzgg=G`z <bar> retab <bar> :WhitespaceStrip <CR>
-nnoremap <silent> <F6> :NERDTreeToggle<CR>
+noremap  <leader>t mzgg=G`z <bar> retab
+noremap  <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :NERDTreeFind<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
 " Yank selectors
@@ -21,22 +21,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-call plug#begin('~/.vim/plugged')
+  endif
+   call plug#begin('~/.vim/plugged')
 
 """ Ablolish.vim      - Word variant manipulation... hard to explain, check the link.
 Plug 'https://github.com/tpope/tpope-vim-abolish'
-
-""" AirLine           - Lean & mean status/tabline for vim that's light as air
-" Plug 'https://github.com/vim-airline/vim-airline'
-" Plug 'https://github.com/vim-airline/vim-airline-themes'
-" let g:airline_powerline_fonts = 1
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-" let g:airline_symbols.space = "\ua0"
-" let g:airline#extensions#tabline#enabled = -1
-" let g:airline_theme='badwolf'
 
 """ Ctrl+P            - Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
@@ -60,6 +49,9 @@ Plug 'https://github.com/morhetz/gruvbox'
 
 """ Gutentags         - A Vim plugin that manages your tag files
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
+let g:gutentags_ctags_executable = 'uctags'
+let g:gutentags_cache_dir = '~/.vim/tags'
+"let g:gutentags_project_root = ['robots.txt']
 
 """ Lion              - A simple alignment operator for Vim text editor
 Plug 'https://github.com/tommcdo/vim-lion'
@@ -77,13 +69,11 @@ Plug 'https://github.com/bluz71/vim-moonfly-statusline'
 """ Mucomplete        - Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#chains = {
-      \ 'default' : ['path', 'ulti', 'omni', 'keyn', 'dict', 'uspl'],
-      \ 'vim'     : ['path', 'cmd', 'keyn']
-      \ }
-inoremap <expr> <c-e> mucomplete#popup_exit("\<c-e>")
-inoremap <expr> <c-y> mucomplete#popup_exit("\<c-y>")
-inoremap <expr>  <cr> mucomplete#popup_exit("\<cr>")
+let g:mucomplete#chains = {'default' : ['path', 'ulti', 'omni', 'keyn', 'dict', 'uspl'], 'vim' : ['path', 'ulti', 'cmd', 'keyn']}
+inoremap <expr> <C-E> mucomplete#popup_exit('<C-E>')
+inoremap <expr> <C-Y> mucomplete#popup_exit('<C-Y>')
+inoremap <expr> <CR> mucomplete#popup_exit('<CR>') . (pumvisible() && len(UltiSnips#SnippetsInCurrentScope()) ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '')
+
 
 """ NERDTree          - A tree explorer plugin for vim.
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -117,6 +107,7 @@ highlight SyntasticStyleErrorSign    term=bold    ctermfg=11   gui=bold    guifg
 
 """ Tagbar            - Vim plugin that displays tags in a window
 Plug 'https://github.com/majutsushi/tagbar'
+let g:tagbar_ctags_bin = 'uctags'
 
 """ TTags             - Tag list browser for VIM (List, filter, preview, jump to tags)
 Plug 'https://github.com/tomtom/ttags_vim'
@@ -164,13 +155,12 @@ set undodir=~/.vim/undo//
 " silent! colorscheme molokai
 let g:gruvbox_contrast_dark='hard'
 set background=dark
-" silent! colorscheme gruvbox
-silent! colorscheme moonfly
+silent! colorscheme gruvbox
+"silent! colorscheme moonfly
 
 
 " Set:
 set autoindent                   " Auto-indent new lines
-set autoread                     " Autoload file changes. you can undo by pressing u.
 set backspace=indent,eol,start   " Allow backspace in insert mode
 set display+=lastline
 set encoding=utf-8               " Utf-8 as a minimum
@@ -201,6 +191,8 @@ set title                        " Turn on titlebar support
 set undolevels=1000              " Number of undo levels
 set visualbell                   " Use visual bell (no beeping)
 set virtualedit=block            " Let cursor move past the last char in <C-v> mode
+set wildmenu
+set wildmode=full
 set wrap
 if has("mouse_sgr")
   set ttymouse=sgr
