@@ -50,7 +50,7 @@ Plug 'https://github.com/morhetz/gruvbox'
 
 """ Gutentags         - A Vim plugin that manages your tag files
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
-let g:gutentags_ctags_executable = 'uctags'
+let g:gutentags_ctags_executable = 'ctags'
 let g:gutentags_cache_dir = '~/.vim/tags'
 "let g:gutentags_project_root = ['robots.txt']
 
