@@ -8,7 +8,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Linenumbers, toggle toggle toggle
 nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " map global indent and fix the trailing whitespaces
-noremap  <leader>t mzgg=G`z <bar> retab
+noremap  <leader>i mzgg=G`z
+noremap  <leader>t retab
 noremap  <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :NERDTreeFind<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
@@ -21,10 +22,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  endif
-   call plug#begin('~/.vim/plugged')
+endif
+call plug#begin('~/.vim/plugged')
 
-""" Ablolish.vim      - Word variant manipulation... hard to explain, check the link.
+""" Ablolish.vim      - Word variant manipulation, hard to explain
 Plug 'https://github.com/tpope/tpope-vim-abolish'
 
 """ Ctrl+P            - Fuzzy file, buffer, mru, tag, etc finder.
@@ -69,11 +70,17 @@ Plug 'https://github.com/bluz71/vim-moonfly-statusline'
 """ Mucomplete        - Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#chains = {'default' : ['path', 'ulti', 'omni', 'keyn', 'dict', 'uspl'], 'vim' : ['path', 'ulti', 'cmd', 'keyn']}
+let g:mucomplete#chains = {
+      \ 'default' : ['path', 'ulti', 'omni', 'keyn', 'dict', 'uspl'],
+      \ 'vim' : ['path', 'ulti', 'cmd', 'keyn']
+      \ }
 inoremap <expr> <C-E> mucomplete#popup_exit('<C-E>')
 inoremap <expr> <C-Y> mucomplete#popup_exit('<C-Y>')
-inoremap <expr> <CR> mucomplete#popup_exit('<CR>') . (pumvisible() && len(UltiSnips#SnippetsInCurrentScope()) ? '<C-R>=UltiSnips#ExpandSnippet()<CR>' : '')
-
+inoremap <expr> <CR> mucomplete#popup_exit('<CR>')
+      \ . (pumvisible()
+      \ && len(UltiSnips#SnippetsInCurrentScope())
+      \ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>'
+      \ : '')
 
 """ NERDTree          - A tree explorer plugin for vim.
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -109,7 +116,7 @@ highlight SyntasticStyleErrorSign    term=bold    ctermfg=11   gui=bold    guifg
 Plug 'https://github.com/majutsushi/tagbar'
 let g:tagbar_ctags_bin = 'uctags'
 
-""" TTags             - Tag list browser for VIM (List, filter, preview, jump to tags)
+""" TTags             - Tag list browser for VIM
 Plug 'https://github.com/tomtom/ttags_vim'
 
 """ Python-mode       - PyLint, Rope, Pydoc, breakpoints from box.
@@ -137,7 +144,9 @@ call plug#end()
 
 
 " Backup / Swap / Undo-files:
-" The double tailing slash will store files using full paths so if you edit two different models.py files you won't clobber your swap or backups.
+" The double tailing slash will store files using full paths
+" so if you edit two different models.py files
+" you won't clobber your swap or backups.
 silent !mkdir -p ~/.vim/backup
 set backup
 set backupdir=~/.vim/backup//
@@ -160,37 +169,37 @@ silent! colorscheme gruvbox
 
 
 " Set:
-set autoindent                   " Auto-indent new lines
-set backspace=indent,eol,start   " Allow backspace in insert mode
+set autoindent                 " Auto-indent new lines
+set backspace=indent,eol,start " Allow backspace in insert mode
 set display+=lastline
-set encoding=utf-8               " Utf-8 as a minimum
+set encoding=utf-8             " Utf-8 as a minimum
 set expandtab
-set gcr=a:blinkon0               " Disable cursor blink
-set history=1000                 " Store lots of :cmdline history
-set hlsearch                     " Highlight all search results
-set ignorecase                   " Always case-insensitie
-set incsearch                    " Searches for strings incrementally
+set gcr=a:blinkon0             " Disable cursor blink
+set history=1000               " Store lots of :cmdline history
+set hlsearch                   " Highlight all search results
+set ignorecase                 " Always case-insensitie
+set incsearch                  " Searches for strings incrementally
 set laststatus=2
-set lazyredraw                   " avoid redrawing the screen mid-command.
-set mouse=                       " In normal and visual mode
-set nocompatible                 " Stop behaving like vi
-set number                       " Show line numbers
-set numberwidth=1                " using only 1 column (and 1 space) while possible
-set ruler                        " Show row and column ruler information
-set shiftwidth=2                 " Number of auto-indent spaces
-set showcmd                      " Show command in bottom bar
-set showmatch                    " Highlight matching brace
-set shortmess+=a                 " Use [+]/[RO]/[w] for modified/readonly/written.
-set smartcase                    " Enable smart-case search
-set smartindent                  " Enable smart-indent
-set smarttab                     " Enable smart-tabs
-set splitright                   " New windows open to the right of the current one
-set softtabstop=2                " Number of spaces per tab
+set lazyredraw                 " avoid redrawing the screen mid-command.
+set mouse=                     " In normal and visual mode
+set nocompatible               " Stop behaving like vi
+set number                     " Show line numbers
+set numberwidth=1              " using only 1 column (and 1 ws) while possible
+set ruler                      " Show row and column ruler information
+set shiftwidth=2               " Number of auto-indent spaces
+set showcmd                    " Show command in bottom bar
+set showmatch                  " Highlight matching brace
+set shortmess+=a               " Use [+]/[RO]/[w] for modified/readonly/written
+set smartcase                  " Enable smart-case search
+set smartindent                " Enable smart-indent
+set smarttab                   " Enable smart-tabs
+set splitright                 " New windows open to the right
+set softtabstop=2              " Number of spaces per tab
 set tabstop=2
-set title                        " Turn on titlebar support
-set undolevels=1000              " Number of undo levels
-set visualbell                   " Use visual bell (no beeping)
-set virtualedit=block            " Let cursor move past the last char in <C-v> mode
+set title                      " Turn on titlebar support
+set undolevels=1000            " Number of undo levels
+set visualbell                 " Use visual bell (no beeping)
+set virtualedit=block          " Let cursor move past the last char in <C-v>
 set wildmenu
 set wildmode=full
 set wrap
