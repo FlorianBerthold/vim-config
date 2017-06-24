@@ -1,6 +1,6 @@
 "Mappings:
 " Map - leader to space
-let mapleader=" "
+let mapleader=' '
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
@@ -8,9 +8,9 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Linenumbers, toggle toggle toggle
 nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " map global indent and fix the trailing whitespaces
-noremap  <leader>i mzgg=G`z
-noremap  <leader>t retab
-noremap  <silent> <F6> :NERDTreeToggle<CR>
+noremap  <silent> <leader>i mzgg=G`z<CR>
+noremap  <silent> <leader>f :retab<CR>
+nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :NERDTreeFind<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
 " Yank selectors
