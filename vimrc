@@ -9,7 +9,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " map global indent and fix the trailing whitespaces
 noremap  <silent> <leader>i mzgg=G`z<CR>
-noremap  <silent> <leader>f :retab<CR>
+noremap  <silent> <leader>r :retab<CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :NERDTreeFind<CR>
 nnoremap <silent> <F8> :TagbarToggle<CR>
@@ -92,6 +92,9 @@ Plug 'https://github.com/saltstack/salt-vim'
 
 """ Sneak             - The missing motion for Vim
 Plug 'https://github.com/justinmk/vim-sneak'
+
+""" Snippets          - My Snippets
+Plug 'https://github.com/FlorianBerthold/vim-snippets'
 
 """ Surround.vim      - Quoting/parenthesizing made simple
 Plug 'https://github.com/tpope/vim-surround'
