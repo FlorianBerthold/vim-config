@@ -200,6 +200,8 @@ set splitright                 " New windows open to the right
 set softtabstop=2              " Number of spaces per tab
 set tabstop=2
 set title                      " Turn on titlebar support
+set t_ts=]1;
+set t_fs=
 set undolevels=1000            " Number of undo levels
 set visualbell                 " Use visual bell (no beeping)
 set virtualedit=block          " Let cursor move past the last char in <C-v>
