@@ -8,11 +8,12 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Linenumbers, toggle toggle toggle
 nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " map global indent and fix the trailing whitespaces
-noremap  <silent> <leader>i mzgg=G`z<CR>
-noremap  <silent> <leader>r :retab<CR>
+nnoremap <silent> <leader>i gg=G``   <CR>
+nnoremap <silent> <leader>r :retab   <CR>
+nnoremap <silent> <F5> :UndotreeToggle<CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
-nnoremap <silent> <F7> :NERDTreeFind<CR>
-nnoremap <silent> <F8> :TagbarToggle<CR>
+nnoremap <silent> <F7> :NERDTreeFind  <CR>
+nnoremap <silent> <F8> :TagbarToggle  <CR>
 " Yank selectors
 vnoremap // y/<C-R>\"\"\"<CR>
 
@@ -28,13 +29,19 @@ call plug#begin('~/.vim/plugged')
 """ Ablolish.vim      - Word variant manipulation, hard to explain
 Plug 'https://github.com/tpope/tpope-vim-abolish'
 
+""" Airline           - lean & mean status/tabline for vim that's light as air
+Plug 'https://github.com/vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 1
+
 """ Ctrl+P            - Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'https://github.com/kien/ctrlp.vim'
 " dont change work dir, use the one where vim started
 let g:ctrlp_working_path_mode = 0
 
 """ Colorizer         - CSS Color highlighting
-let g:colorizer_auto_filetype = 'css,html'
+Plug 'https://github.com/lilydjwg/colorizer'
 
 """ Commentary.vim    - Comment stuff out
 Plug 'https://github.com/tpope/vim-commentary'
@@ -61,12 +68,6 @@ let g:lion_squeeze_spaces = 1
 """ Molokai           - Color scheme for Vim
 Plug 'https://github.com/tomasr/molokai'
 
-""" Moonfly           - A dark color scheme for Vim
-Plug 'https://github.com/bluz71/vim-moonfly-colors'
-
-""" Moonfly-Statusbar - A simple statusline for Vim with moonfly colors
-Plug 'https://github.com/bluz71/vim-moonfly-statusline'
-
 """ Mucomplete        - Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 let g:mucomplete#enable_auto_at_startup = 1
@@ -76,7 +77,7 @@ let g:mucomplete#chains = {
       \ }
 inoremap <expr> <C-E> mucomplete#popup_exit('<C-E>')
 inoremap <expr> <C-Y> mucomplete#popup_exit('<C-Y>')
-inoremap <expr> <CR> mucomplete#popup_exit('<CR>')
+inoremap <expr> <CR>  mucomplete#popup_exit('<CR>')
       \ . (pumvisible()
       \ && len(UltiSnips#SnippetsInCurrentScope())
       \ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>'
@@ -87,8 +88,8 @@ Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 let NERDTreeShowHidden=1
 let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
-""" Salt              - Vim files for editing Salt files
-Plug 'https://github.com/saltstack/salt-vim'
+""" Signature         - toggle, display and navigate marks
+Plug 'https://github.com/kshenoy/vim-signature'
 
 """ Sneak             - The missing motion for Vim
 Plug 'https://github.com/justinmk/vim-sneak'
@@ -106,18 +107,18 @@ let g:syntastic_shell = "/bin/sh"
 let g:syntastic_check_on_open        = 0
 let g:syntastic_check_on_wq          = 0
 let g:syntastic_error_symbol         = "✗"
-let g:syntastic_warning_symbol       = "⚠"
 let g:syntastic_style_error_symbol   = "S"
 let g:syntastic_style_warning_symbol = "s"
-highlight SyntasticStyleWarning      term=reverse cterm=bold   ctermfg=244 ctermbg=232 gui=bold guifg=#808080 guibg=#080808
+let g:syntastic_warning_symbol       = "⚠"
 highlight SyntasticStyleError        term=reverse ctermbg=235  guibg=#403D3D
-highlight SyntasticWarningSign       ctermfg=208  gui=italic   guifg=#FD971F
-highlight SyntasticStyleWarningSign  ctermfg=11   guifg=Yellow ctermbg=236 guibg=#232526
 highlight SyntasticStyleErrorSign    term=bold    ctermfg=11   gui=bold    guifg=Yellow
+highlight SyntasticStyleWarning      term=reverse cterm=bold   ctermfg=244 ctermbg=232 gui=bold guifg=#808080 guibg=#080808
+highlight SyntasticStyleWarningSign  ctermfg=11   guifg=Yellow ctermbg=236 guibg=#232526
+highlight SyntasticWarningSign       ctermfg=208  gui=italic   guifg=#FD971F
 
 """ Tagbar            - Vim plugin that displays tags in a window
 Plug 'https://github.com/majutsushi/tagbar'
-let g:tagbar_ctags_bin = 'uctags'
+let g:tagbar_ctags_bin = 'ctags'
 
 """ TTags             - Tag list browser for VIM
 Plug 'https://github.com/tomtom/ttags_vim'
@@ -139,7 +140,6 @@ Plug 'https://github.com/tpope/vim-unimpaired'
 
 """ Undotree          - The ultimate undo history visualizer for VIM
 Plug 'https://github.com/mbbill/undotree'
-nnoremap <F5> :UndotreeToggle<cr>
 
 """ Whitespaces       - No description, website, or bullshit provided.
 Plug 'https://github.com/720720/whitespace'
@@ -168,7 +168,6 @@ set undodir=~/.vim/undo//
 let g:gruvbox_contrast_dark='hard'
 set background=dark
 silent! colorscheme gruvbox
-"silent! colorscheme moonfly
 
 
 " Set:
@@ -184,7 +183,7 @@ set ignorecase                 " Always case-insensitie
 set incsearch                  " Searches for strings incrementally
 set laststatus=2
 set lazyredraw                 " avoid redrawing the screen mid-command.
-set mouse=                     " In normal and visual mode
+set mouse=                     " No mouse
 set nocompatible               " Stop behaving like vi
 set number                     " Show line numbers
 set numberwidth=1              " using only 1 column (and 1 ws) while possible
