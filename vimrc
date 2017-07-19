@@ -8,8 +8,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Linenumbers, toggle toggle toggle
 nnoremap <silent> <F1> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
 " map global indent and fix the trailing whitespaces
-nnoremap <silent> <leader>i gg=G``   <CR>
-nnoremap <silent> <leader>r :retab   <CR>
+nnoremap <silent> <leader>i gg=G``    <CR>
+nnoremap <silent> <leader>r :retab    <CR>
 nnoremap <silent> <F5> :UndotreeToggle<CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :NERDTreeFind  <CR>
@@ -83,6 +83,23 @@ inoremap <expr> <CR>  mucomplete#popup_exit('<CR>')
       \ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>'
       \ : '')
 
+""" NERDCommenter                  - Comment functions so powerful—no comment necessary
+Plug 'https://github.com/scrooloose/nerdcommenter'
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 0
+
 """ NERDTree          - A tree explorer plugin for vim.
 Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 let NERDTreeShowHidden=1
@@ -125,9 +142,15 @@ Plug 'https://github.com/tomtom/ttags_vim'
 
 """ Python-mode       - PyLint, Rope, Pydoc, breakpoints from box.
 Plug 'https://github.com/python-mode/python-mode'
+let g:pymode_rope_autoimport = 0
 
 """ Polyglot          - A solid language pack for vim.
 Plug 'https://github.com/sheerun/vim-polyglot'
+au BufRead,BufNewFile *.nginx set ft=nginx
+au BufRead,BufNewFile */etc/nginx/* set ft=nginx
+au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
+au BufRead,BufNewFile nginx.conf set ft=nginx
+au BufRead,BufNewFile default.conf set ft=nginx
 
 """ Repeat.vim        - enable repeating supported plugin maps with
 Plug 'https://github.com/tpope/vim-repeat'
