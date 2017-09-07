@@ -46,6 +46,9 @@ Plug 'https://github.com/lilydjwg/colorizer'
 """ Commentary.vim    - Comment stuff out
 Plug 'https://github.com/tpope/vim-commentary'
 
+""" Docker
+Plug 'https://github.com/ekalinin/Dockerfile.vim.git'
+
 """ Eunuch.vim        - Helpers for UNIX
 Plug 'https://github.com/tpope/vim-eunuch'
 
@@ -191,6 +194,8 @@ set undodir=~/.vim/undo//
 let g:gruvbox_contrast_dark='hard'
 set background=dark
 silent! colorscheme gruvbox
+:autocmd BufRead,BufNewFile logging.conf setf dosini
+:autocmd BufRead,BufNewFile supervisord.conf setf dosini
 
 
 " Set:
@@ -206,7 +211,6 @@ set ignorecase                 " Always case-insensitie
 set incsearch                  " Searches for strings incrementally
 set laststatus=2
 set lazyredraw                 " avoid redrawing the screen mid-command.
-set mouse=                     " No mouse
 set nocompatible               " Stop behaving like vi
 set number                     " Show line numbers
 set numberwidth=1              " using only 1 column (and 1 ws) while possible
@@ -231,8 +235,10 @@ set wildmenu
 set wildmode=full
 set wrap
 if has("mouse_sgr")
+  set mouse=a
   set ttymouse=sgr
 else
+  set mouse=a
   set ttymouse=xterm2
 end
 
