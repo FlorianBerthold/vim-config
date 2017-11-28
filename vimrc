@@ -1,4 +1,4 @@
-"Mappings:
+" Mappings:
 " Map - leader to space
 let mapleader=' '
 " edit vimrc/zshrc and load vimrc bindings
@@ -27,7 +27,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 """ Ablolish.vim      - Word variant manipulation, hard to explain
-Plug 'https://github.com/tpope/tpope-vim-abolish'
+" Plug 'https://github.com/tpope/tpope-vim-abolish'
 
 """ Airline           - lean & mean status/tabline for vim that's light as air
 Plug 'https://github.com/vim-airline/vim-airline'
@@ -75,16 +75,16 @@ Plug 'https://github.com/tomasr/molokai'
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#chains = {
-      \ 'default' : ['path', 'ulti', 'omni', 'keyn', 'dict', 'uspl'],
-      \ 'vim' : ['path', 'ulti', 'cmd', 'keyn']
+      \ 'default' : ['path', 'omni', 'keyn', 'dict', 'uspl'],
+      \ 'vim' : ['path', 'cmd', 'keyn']
       \ }
 inoremap <expr> <C-E> mucomplete#popup_exit('<C-E>')
 inoremap <expr> <C-Y> mucomplete#popup_exit('<C-Y>')
 inoremap <expr> <CR>  mucomplete#popup_exit('<CR>')
-      \ . (pumvisible()
-      \ && len(UltiSnips#SnippetsInCurrentScope())
-      \ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>'
-      \ : '')
+"      \ . (pumvisible()
+"      \ && len(UltiSnips#SnippetsInCurrentScope())
+"      \ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>'
+"      \ : '')
 
 """ NERDCommenter                  - Comment functions so powerful—no comment necessary
 Plug 'https://github.com/scrooloose/nerdcommenter'
@@ -108,6 +108,11 @@ Plug 'https://github.com/scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 let NERDTreeShowHidden=1
 let NERDTreeSortOrder = ['\/$', '\.js*', '\.cpp$', '\.h$', '*']
 
+""" Ranger            - Ranger integration in vim
+Plug 'https://github.com/francoiscabrol/ranger.vim'
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
+
 """ Signature         - toggle, display and navigate marks
 Plug 'https://github.com/kshenoy/vim-signature'
 
@@ -115,7 +120,7 @@ Plug 'https://github.com/kshenoy/vim-signature'
 Plug 'https://github.com/justinmk/vim-sneak'
 
 """ Snippets          - My Snippets
-Plug 'https://github.com/FlorianBerthold/vim-snippets'
+" Plug 'https://github.com/FlorianBerthold/vim-snippets'
 
 """ Surround.vim      - Quoting/parenthesizing made simple
 Plug 'https://github.com/tpope/vim-surround'
@@ -159,7 +164,7 @@ au BufRead,BufNewFile default.conf set ft=nginx
 Plug 'https://github.com/tpope/vim-repeat'
 
 """ UltiSnips         - The ultimate snippet solution for Vim.
-Plug 'https://github.com/SirVer/ultisnips'
+"Plug 'https://github.com/SirVer/ultisnips'
 
 """ Unimpaired.vim    - pairs of handy bracket mappings
 Plug 'https://github.com/tpope/vim-unimpaired'
@@ -211,7 +216,6 @@ set ignorecase                 " Always case-insensitie
 set incsearch                  " Searches for strings incrementally
 set laststatus=2
 set lazyredraw                 " avoid redrawing the screen mid-command.
-set nocompatible               " Stop behaving like vi
 set number                     " Show line numbers
 set numberwidth=1              " using only 1 column (and 1 ws) while possible
 set ruler                      " Show row and column ruler information
@@ -219,6 +223,7 @@ set shiftwidth=2               " Number of auto-indent spaces
 set showcmd                    " Show command in bottom bar
 set showmatch                  " Highlight matching brace
 set shortmess+=a               " Use [+]/[RO]/[w] for modified/readonly/written
+set shortmess-=c
 set smartcase                  " Enable smart-case search
 set smartindent                " Enable smart-indent
 set smarttab                   " Enable smart-tabs
