@@ -238,7 +238,6 @@ set visualbell                 " Use visual bell (no beeping)
 set virtualedit=block          " Let cursor move past the last char in <C-v>
 set wildmenu
 set wildmode=full
-set wrap
 if has("mouse_sgr")
   set mouse=a
   set ttymouse=sgr
