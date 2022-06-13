@@ -7,7 +7,7 @@ Vim 7.3+, best with Vim 8.0+ and Truecolor Terminals.
 
 On Debian
 ```
-aptitude install -y vim ranger
+aptitude install -y vim-nox ranger universal-ctags
 ```
 
 
