@@ -172,8 +172,6 @@ Plug 'https://github.com/tpope/vim-unimpaired'
 """ Undotree          - The ultimate undo history visualizer for VIM
 Plug 'https://github.com/mbbill/undotree'
 
-""" Whitespaces       - No description, website, or bullshit provided.
-Plug 'https://github.com/720720/whitespace'
 call plug#end()
 
 

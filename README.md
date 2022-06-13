@@ -5,9 +5,9 @@ Sub-Net .vimrc, no windows, gvim or neovim support for now.
 Vim 7.3+, best with Vim 8.0+ and Truecolor Terminals.
 
 
-On Debian something like
+On Debian
 ```
-aptitude install -y vim
+aptitude install -y vim ranger
 ```
 
 
