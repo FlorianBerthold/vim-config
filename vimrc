@@ -74,13 +74,11 @@ Plug 'https://github.com/tomasr/molokai'
 """ Mucomplete        - Chained completion that works the way you want!
 Plug 'https://github.com/lifepillar/vim-mucomplete'
 let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 1
 let g:mucomplete#chains = {
       \ 'default' : ['path', 'omni', 'keyn', 'dict', 'uspl'],
       \ 'vim' : ['path', 'cmd', 'keyn']
       \ }
-inoremap <expr> <C-E> mucomplete#popup_exit('<C-E>')
-inoremap <expr> <C-Y> mucomplete#popup_exit('<C-Y>')
-inoremap <expr> <CR>  mucomplete#popup_exit('<CR>')
 "      \ . (pumvisible()
 "      \ && len(UltiSnips#SnippetsInCurrentScope())
 "      \ ? '<C-R>=UltiSnips#ExpandSnippet()<CR>'

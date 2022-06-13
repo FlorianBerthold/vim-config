@@ -5,7 +5,7 @@
 # brew install shellcheck
 
 # cleanup
-rm ~/.vimrc
+rm -rf ~/.vimrc
 rm -rf ~/.vim
 
 # get the config

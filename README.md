@@ -1,5 +1,5 @@
 # vim-config
-Sub-Net .vimrc, no windows, gvim or neovim support for now.
+Sub-Net .vimrc, no windows, gvim or neovim support.
 
 # Pre Req.
 Vim 7.3+, best with Vim 8.0+ and Truecolor Terminals.
